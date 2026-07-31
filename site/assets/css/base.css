@@ -170,12 +170,16 @@ p{max-width:62ch}
 .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--glitch); outline-offset:0; border-color:transparent}
 .hp{position:absolute; left:-9999px} /* honeypot */
 
-/* ---------- reveal ---------- */
-.reveal{opacity:0; transform:translateY(12px)}
-.reveal.in{opacity:1; transform:none; transition:opacity var(--med) var(--ease), transform var(--med) var(--ease)}
-@media (prefers-reduced-motion:reduce){
-  .reveal{opacity:1; transform:none; transition:none}
-}
+/* ---------- motion layer (see MOTION.md; motion.js only ever hides-to-show) ---------- */
+.sweep{height:1px; background:var(--chrome); opacity:.35; transform-origin:left; margin-block:0}
+.sig-line{display:inline-block}
+/* booth-pin: DEFAULT is plain stacked flow (the reduced-motion/no-js experience).
+   .pinned is added by motion.js only when the pin actually runs. */
+.pane{margin-bottom:var(--sp-5)}
+.pin-stage.pinned .pin-viewport{position:relative; height:100dvh; display:grid; align-items:center; overflow:hidden}
+.pin-stage.pinned .pane{grid-area:1/1; margin:0; align-self:center}
+/* legacy .reveal kept visible — superseded by [data-mt] */
+.reveal{opacity:1}
 
 /* ---------- misc ---------- */
 .grid-2{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:var(--sp-4)}

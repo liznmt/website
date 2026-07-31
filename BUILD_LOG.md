@@ -11,6 +11,18 @@ Implement MOTION.md: (1) motion tokens + `assets/js/motion.js` + GSAP/ScrollTrig
 - Reduced-motion = complete static site (motion gated behind `html.m-on`, styles only ever REMOVE visibility). Pins desktop-only + fine-pointer.
 - Photo re-picks in MOTION.md §3: hero KEPT (re-cropped for drift), bookstrip gains yacht fg/bg depth pair, lab gets blue-light home-setup + archival two-up, night-OS pane = yacht focused shot. New shots still needed are unchanged from the shot list (slates in place).
 
+### Motion retrofit of M1–M4 (7/30, per MOTION.md)
+| choice | reasoning | how to reverse |
+|---|---|---|
+| GSAP 3.12.5 + ScrollTrigger from cdnjs, deferred, on all pages | MOTION.md §0; only zero-build path to pins + scrub | remove 3 script tags per page |
+| All motion gated: `?nomotion`, reduced-motion, or missing CDN ⇒ untouched static site | fallback-first contract | n/a |
+| booth-pin bound via `gsap.matchMedia('(min-width:820px) and (pointer:fine)')` with clean revert | binds/unbinds live on resize; mobile keeps stacked static layout (perf + small screens) | delete the pin block |
+| tilt: press photo grid + mix cards; async cards hook via `window.lmMotion` | static-DOM binding misses fetch-rendered cards | delete hooks |
+| old `.reveal` IO system removed; `[data-mt]`/`[data-tt]`/`.sweep`/`[data-drift]` are the motion vocabulary | one system, one spec | n/a |
+
+**Verify (7/30):** m-on gate works; GSAP+ST load; 22 ScrollTriggers register on home; track-title splits chars (aria-label preserved); pin code path creates pin-spacer with day visible/night staged (verified by direct execution); tween mechanics advance opacity; `?nomotion` renders ZERO hidden elements with panes stacked (complete static experience); mobile: no pin, maxScrollX=0; crawl 8 files 0 broken; console clean (6 GSAP warnings in the session log were residue of my manual console experiments — fresh loads add none). **Found+fixed during verify: panes were missing `data-pane` attributes — the pin would have silently no-opped in production.**
+**Residual (honest):** this Mac's embedded browser pauses requestAnimationFrame for hidden panes, so full scrub *progression* (pin crossfade % vs scroll %) couldn't be watched end-to-end locally. Structure, staging, start/end states, and trigger registration are all verified. First post-deploy task: eyeball the pin on a real browser; the scrub values are standard GSAP proportional positions.
+
 ### M3 — mixes (7/30)
 Facade cards from mixes.json (0 third-party bytes until play tapped — verified: 0 iframes before click, 1 after), residency block w/ slate, /#signal anchor fix. Verify: console clean, crawl 8 files 0 broken.
 

@@ -14,7 +14,7 @@
 
   function card(mix) {
     var el = document.createElement('article');
-    el.className = 'mix-card reveal in';
+    el.className = 'mix-card';
     el.innerHTML =
       '<div class="mix-facade">' +
         '<button class="mix-play" aria-label="load and play ' + mix.title + '">▶</button>' +
@@ -35,7 +35,11 @@
     .then(function (r) { return r.json(); })
     .then(function (data) {
       box.textContent = '';
-      (data.mixes || []).forEach(function (m) { box.appendChild(card(m)); });
+      var cards = (data.mixes || []).map(function (m) { var c = card(m); box.appendChild(c); return c; });
+      if (window.lmMotion) {
+        window.lmMotion.transmit(cards);
+        cards.forEach(function (c) { window.lmMotion.tilt(c); });
+      }
     })
     .catch(function () {
       box.innerHTML = '<p class="lede">the mixes live on <a href="https://soundcloud.com/lizbeth-marquez-358898478" rel="noopener" target="_blank">soundcloud</a> meanwhile.</p>';

@@ -23,9 +23,10 @@
   .hero{
     position:relative; min-height:92dvh; display:flex; align-items:flex-end;
     padding-block:calc(var(--nav-h) + var(--sp-5)) var(--sp-6);
+    overflow:hidden;
   }
-  .hero-bg{position:absolute; inset:0; z-index:-1; overflow:hidden}
-  .hero-bg img{width:100%; height:100%; object-fit:cover; object-position:center 40%}
+  .hero-bg{position:absolute; inset:-8% 0; z-index:-1; overflow:hidden}
+  .hero-bg img{width:100%; height:100%; object-fit:cover; object-position:70% 45%}
   .hero-bg::after{
     content:""; position:absolute; inset:0;
     background:linear-gradient(to top, var(--bg) 4%, rgba(10,10,12,.55) 45%, rgba(10,10,12,.35));
@@ -41,8 +42,14 @@
   @media (prefers-reduced-motion:reduce){ .status::before{animation:none} }
   .sc-embed{border:1px solid var(--line); border-radius:var(--r-m); overflow:hidden; background:var(--surface)}
   .sc-embed iframe{display:block; width:100%; border:0}
-  .split{display:grid; gap:var(--sp-5); align-items:center; grid-template-columns:1fr}
-  @media (min-width:820px){ .split{grid-template-columns:1.1fr .9fr} }
+
+  /* booth-pin panes (default = stacked static; .pinned applied by motion.js) */
+  .pane-grid{display:grid; gap:var(--sp-5); align-items:center; grid-template-columns:1fr}
+  @media (min-width:820px){ .pane-grid{grid-template-columns:1.1fr .9fr} }
+  .os-tag{font-family:var(--f-mono); font-size:var(--t-xs); letter-spacing:.24em; text-transform:uppercase; color:var(--dim); margin-bottom:var(--sp-3); display:block}
+  .pane-day .os-tag b{color:var(--glitch); font-weight:400}
+  .pane-night .os-tag b{color:var(--signal-ink); font-weight:400}
+
   .date-row{
     display:grid; grid-template-columns:8.5rem 1fr auto; gap:var(--sp-3); align-items:center;
     padding:var(--sp-3) 0; border-bottom:1px solid var(--line);
@@ -52,9 +59,17 @@
   .date-when{color:var(--signal-ink)}
   .past-label{margin-top:var(--sp-4)}
   @media (max-width:560px){ .date-row{grid-template-columns:1fr; gap:.3rem} }
-  .bookstrip{
-    text-align:center; border-block:1px solid var(--line); background:var(--surface);
+
+  /* bookstrip — layered depth pair */
+  .bookstrip{position:relative; overflow:hidden; border-block:1px solid var(--line); background:var(--surface); text-align:center}
+  .strip-bg{position:absolute; inset:-12% 0; z-index:0}
+  .strip-bg img{width:100%; height:100%; object-fit:cover; filter:blur(14px) brightness(.35)}
+  .strip-fg{
+    position:relative; z-index:1; width:min(260px,60vw); margin:var(--sp-5) auto 0;
+    border-radius:var(--r-m); overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,.5);
   }
+  .bookstrip .container{position:relative; z-index:1}
+
   .newsletter form{display:flex; gap:var(--sp-3); max-width:34rem; flex-wrap:wrap}
   .newsletter input[type=email]{
     flex:1 1 14rem; font:inherit; color:var(--ink); background:var(--surface);
@@ -84,17 +99,18 @@
 <main id="main">
   <section class="hero">
     <div class="hero-bg" aria-hidden="true">
-      <img src="/assets/img/hero-pirate-red-960.jpg"
+      <!-- depth-drift: the room moves slower than the name — you're walking in -->
+      <img src="/assets/img/hero-pirate-red-960.jpg" data-drift="6"
            srcset="/assets/img/hero-pirate-red-480.jpg 480w, /assets/img/hero-pirate-red-960.jpg 960w, /assets/img/hero-pirate-red-1600.jpg 1600w"
            sizes="100vw" alt="" fetchpriority="high">
-      <!-- SHOT LIST #1: replace with hero-club-wide.jpg when it exists (see slates) -->
+      <!-- SHOT LIST #1: replace with hero-club-wide.jpg when it exists -->
     </div>
     <div class="container">
-      <p class="status">available to book · la and beyond</p>
-      <span class="eyebrow">dj · los angeles</span>
-      <h1>lizzy<br>mc<span style="color:var(--signal-ink)">wired</span></h1>
-      <p class="lede" style="margin-top:var(--sp-4); max-width:36ch">adhd house — music that moves the way my brain does.</p>
-      <div style="margin-top:var(--sp-5); display:flex; gap:var(--sp-3); flex-wrap:wrap">
+      <p class="status sig-meta">available to book · la and beyond</p>
+      <span class="eyebrow sig-meta">dj · los angeles</span>
+      <h1><span class="sig-line">lizzy</span><br><span class="sig-line">mc<span class="sig-glitch" style="color:var(--signal-ink); display:inline-block">wired</span></span></h1>
+      <p class="lede sig-meta" style="margin-top:var(--sp-4); max-width:36ch">adhd house — music that moves the way my brain does.</p>
+      <div class="sig-meta" style="margin-top:var(--sp-5); display:flex; gap:var(--sp-3); flex-wrap:wrap">
         <a class="btn" href="/book/">book a set</a>
         <a class="btn btn-ghost" href="/mixes/">the mixes</a>
       </div>
@@ -109,61 +125,93 @@
 
   <section class="section" id="sound">
     <div class="container">
-      <span class="eyebrow reveal">latest transmission</span>
-      <h2 class="reveal">the sound</h2>
-      <div class="sc-embed reveal">
+      <div class="sweep" aria-hidden="true" style="margin-bottom:var(--sp-5)"></div>
+      <span class="eyebrow" data-mt>latest transmission</span>
+      <h2 data-tt>the sound</h2>
+      <div class="sc-embed" data-mt>
         <!-- the one eager embed on the site (approved revision 5): a booker hears her without a click -->
         <iframe title="soundcloud player — venice beach pop up, live set by lizzy mcwired" height="166" allow="autoplay"
           src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/lizbeth-marquez-358898478/venice-beach-pop-up&color=%23ff2222&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>
       </div>
-      <p class="dim reveal" style="margin-top:var(--sp-3)">recorded live at the venice beach pop-up. <a href="/mixes/">more where that came from →</a></p>
+      <p class="dim" data-mt style="margin-top:var(--sp-3)">recorded live at the venice beach pop-up. <a href="/mixes/">more where that came from →</a></p>
     </div>
   </section>
 
-  <section class="section" style="padding-top:0">
-    <div class="container split">
-      <div>
-        <span class="eyebrow reveal">the double life</span>
-        <h2 class="reveal">two operating systems.<br>one person.</h2>
-        <p class="reveal">legal ops at an investment firm by day. dj by night. not a costume change — the same brain, finally allowed to use both hands.</p>
-        <p class="reveal" style="margin-top:var(--sp-3)">the sound is <strong>adhd house</strong>: tech house, minimal, deep tech — arranged the way hyperfocus actually feels. resident on <strong>algorythm radio</strong> with the recurring <em>no boxes</em> segment.</p>
-        <p class="reveal" style="margin-top:var(--sp-4)"><a class="mono" style="color:var(--signal-ink)" href="/press/">the full story lives in the press kit →</a></p>
+  <!-- booth-pin: scrolling literally switches her operating system.
+       default (no-js / reduced-motion / mobile): two readable stacked blocks. -->
+  <section class="pin-stage" data-pin aria-label="the double life">
+    <div class="pin-viewport">
+      <div class="pane pane-day" data-pane="day">
+        <div class="container pane-grid">
+          <div>
+            <span class="os-tag"><b>os one</b> · 8:04 am</span>
+            <h2 data-tt>legal ops.<br>color-coded. invisible.</h2>
+            <p>a major investment firm, downtown. onsites run like clockwork, strategy one-pagers, nothing allowed to go wrong. competent is the costume.</p>
+          </div>
+          <div class="frame">
+            <!-- SHOT LIST #3: double-life-office.jpg replaces this slate -->
+            <img src="/assets/img/slates/double-life-office.svg" width="1000" height="1500" loading="lazy"
+                 alt="placeholder: lizzy in corporate wear at the office — the day-job half of the double life">
+          </div>
+        </div>
       </div>
-      <div class="frame reveal">
-        <img src="/assets/img/yacht-focused-700.jpg"
-             srcset="/assets/img/yacht-focused-700.jpg 700w, /assets/img/yacht-focused-1200.jpg 1200w"
-             sizes="(min-width:820px) 45vw, 92vw"
-             width="1200" height="1600" loading="lazy"
-             alt="lizzy mcwired at the decks — hand on the turntable, focused, red floral dress, city lights behind">
+      <div class="pane pane-night" data-pane="night">
+        <div class="container pane-grid">
+          <div>
+            <span class="os-tag"><b>os two</b> · 11:47 pm</span>
+            <h2 data-tt>same brain.<br>126 bpm. unmasked.</h2>
+            <p>the sound is <strong>adhd house</strong>: tech house, minimal, deep tech — arranged the way hyperfocus actually feels. resident on <strong>algorythm radio</strong>, the recurring <em>no boxes</em> segment.</p>
+            <p style="margin-top:var(--sp-4)"><a class="mono" style="color:var(--signal-ink)" href="/press/">the full story lives in the press kit →</a></p>
+          </div>
+          <div class="frame">
+            <img src="/assets/img/yacht-focused-700.jpg"
+                 srcset="/assets/img/yacht-focused-700.jpg 700w, /assets/img/yacht-focused-1200.jpg 1200w"
+                 sizes="(min-width:820px) 45vw, 92vw"
+                 width="1200" height="1600" loading="lazy"
+                 alt="lizzy mcwired at the decks — hand on the turntable, focused, red floral dress, city lights behind">
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="dates-section" style="padding-top:0">
+  <section class="section" id="dates-section">
     <div class="container">
-      <span class="eyebrow reveal">transmissions</span>
-      <h2 class="reveal">dates</h2>
-      <div id="dates" class="reveal">
+      <div class="sweep" aria-hidden="true" style="margin-bottom:var(--sp-5)"></div>
+      <span class="eyebrow" data-mt>transmissions</span>
+      <h2 data-tt>dates</h2>
+      <div id="dates" data-mt>
         <noscript><p class="lede">dates live at <a href="https://www.instagram.com/lizzy.mcwired">@lizzy.mcwired</a>.</p></noscript>
       </div>
     </div>
   </section>
 
   <section class="section bookstrip">
+    <div class="strip-bg" aria-hidden="true">
+      <img src="/assets/img/yacht-crowd-900.jpg"
+           srcset="/assets/img/yacht-crowd-900.jpg 900w, /assets/img/yacht-crowd-1600.jpg 1600w"
+           sizes="100vw" loading="lazy" alt="" data-drift="8">
+    </div>
     <div class="container">
-      <span class="eyebrow reveal">bookings</span>
-      <h2 class="reveal">your dance floor next</h2>
-      <p class="lede reveal" style="margin-inline:auto">clubs, private events, weddings — la and beyond.</p>
-      <p class="reveal" style="margin-top:var(--sp-4)"><a class="btn" href="/book/">request availability</a></p>
+      <span class="eyebrow" data-mt>bookings</span>
+      <h2 data-tt>your dance floor next</h2>
+      <p class="lede" data-mt style="margin-inline:auto">clubs, private events, weddings — la and beyond.</p>
+      <p data-mt style="margin-top:var(--sp-4)"><a class="btn" href="/book/">request availability</a></p>
+      <div class="strip-fg" data-drift="-4">
+        <img src="/assets/img/yacht-arms-open-700.jpg"
+             srcset="/assets/img/yacht-arms-open-700.jpg 700w, /assets/img/yacht-arms-open-1100.jpg 1100w"
+             sizes="260px" width="1100" height="1467" loading="lazy"
+             alt="lizzy mcwired mid-set, arms spread wide at the decks, marina lights behind">
+      </div>
     </div>
   </section>
 
   <section class="section newsletter" id="signal">
     <div class="container">
-      <span class="eyebrow reveal">stay wired in</span>
-      <h2 class="reveal">the signal list</h2>
-      <p class="reveal" style="margin-bottom:var(--sp-4)">leave your email. when there's something real — a date, a drop — it lands. no drip campaign, no streaks, no "just checking in."</p>
-      <form class="reveal" name="newsletter" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="bot-field">
+      <span class="eyebrow" data-mt>stay wired in</span>
+      <h2 data-tt>the signal list</h2>
+      <p data-mt style="margin-bottom:var(--sp-4)">leave your email. when there's something real — a date, a drop — it lands. no drip campaign, no streaks, no "just checking in."</p>
+      <form data-mt name="newsletter" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="newsletter">
         <p class="hp"><label>don't fill this in: <input name="bot-field"></label></p>
         <input type="email" name="email" required placeholder="your@email.com" aria-label="email address">
@@ -188,5 +236,8 @@
 
 <script src="/assets/js/site.js" defer></script>
 <script src="/assets/js/events.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="/assets/js/motion.js" defer></script>
 </body>
 </html>
