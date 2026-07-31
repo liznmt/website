@@ -12,7 +12,7 @@ OUT = pathlib.Path('site/assets/img/slates')
 SHOTS = [
     ("hero-club-wide",      1600, 900,  "her at the decks, club scale — subject on a third, dark negative space"),
     ("hero-club-mobile",    1080, 1350, "same moment recomposed 4:5 for mobile hero"),
-    ("double-life-office",  1000, 1500, "blazer + badge, elevator bank, deadpan — the day-job half"),
+    # shot #3 (office/elevator) DROPPED 7/30 per Lizbeth — day-job narrative cut sitewide
     ("hands-mixer-macro",   1500, 1000, "hands on jog/faders, shallow depth, red-corded headphones"),
     ("crowd-from-booth",    1600, 900,  "over her shoulder toward a lit crowd — she moves rooms"),
     ("press-landscape",     1600, 900,  "studio, clean backdrop, eyes to camera — the missing landscape press shot"),

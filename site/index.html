@@ -19,16 +19,16 @@
 <link rel="icon" href="/assets/img/favicon-64.png" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <style>
-  /* home-only */
+  /* home — five screens, image-first (MOTION.md restructure plan) */
+
+  /* S1 · the name */
   .hero{
-    position:relative; min-height:92dvh; display:flex; align-items:flex-end;
+    position:relative; min-height:100dvh; display:flex; align-items:flex-end;
     padding-block:calc(var(--nav-h) + var(--sp-5)) var(--sp-6);
     overflow:hidden;
   }
   .hero-bg{
-    position:absolute; inset:-8% 0; z-index:-1; overflow:hidden;
-    /* canvas extension: the photo's own red backdrop continues edge to edge —
-       full portrait shown uncropped on desktop, zero upscaling */
+    position:absolute; inset:0; z-index:-1; overflow:hidden;
     background:radial-gradient(120% 120% at 52% 38%, #c31114 0%, #8f0c0f 55%, #4a0607 100%);
   }
   .hero-bg img{width:100%; height:100%; object-fit:cover; object-position:center 22%}
@@ -43,7 +43,6 @@
     content:""; position:absolute; inset:0;
     background:linear-gradient(to top, var(--bg) 4%, rgba(10,10,12,.45) 40%, rgba(10,10,12,.15));
   }
-  .grade-day{filter:saturate(.35) hue-rotate(-12deg) contrast(1.06) brightness(.92)}
   .status{
     display:inline-flex; align-items:center; gap:.5rem;
     font-family:var(--f-mono); font-size:var(--t-xs); letter-spacing:.2em; text-transform:uppercase;
@@ -53,36 +52,69 @@
   .status::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--signal); box-shadow:0 0 10px var(--glow); animation:pulse 2.4s infinite}
   @keyframes pulse{50%{opacity:.4}}
   @media (prefers-reduced-motion:reduce){ .status::before{animation:none} }
-  .sc-embed{border:1px solid var(--line); border-radius:var(--r-m); overflow:hidden; background:var(--surface)}
+
+  /* full-bleed screen scaffold (S2, S4) */
+  .screen{
+    position:relative; min-height:100dvh; display:flex; align-items:center;
+    overflow:hidden; padding-block:var(--sp-6);
+  }
+  .screen-bg{position:absolute; inset:0; z-index:0; overflow:hidden; background:#0a0a0c}
+  .screen-bg img{width:100%; height:100%; object-fit:cover}
+  .screen-bg::after{content:""; position:absolute; inset:0; background:rgba(10,10,12,.62)}
+  .screen > .container{position:relative; z-index:1}
+
+  /* S2 · the sound — portrait texture, canvas-extended */
+  .sound-bg{background:radial-gradient(110% 110% at 60% 45%, #251015 0%, #120a0e 60%, #0a0a0c 100%)}
+  @media (min-width:820px){
+    .sound-bg img{
+      object-fit:contain; object-position:80% center; opacity:.55;
+      -webkit-mask-image:linear-gradient(to right, transparent 0, #000 10%, #000 90%, transparent 100%);
+      mask-image:linear-gradient(to right, transparent 0, #000 10%, #000 90%, transparent 100%);
+    }
+  }
+  .sound-bg img{opacity:.4}
+  .sc-embed{border:1px solid var(--line); border-radius:var(--r-m); overflow:hidden; background:var(--surface); max-width:46rem}
   .sc-embed iframe{display:block; width:100%; border:0}
+  /* VIDEO SLOT: when bts-main-landscape.mp4 lands in assets/video/, swap this
+     section's .screen-bg img for a video element carrying data-scrub, muted,
+     playsinline, preload=none and a poster frame. motion.js scrub-loop binds it
+     automatically — see MOTION.md video spec. */
 
-  /* booth-pin panes (default = stacked static; .pinned applied by motion.js) */
-  .pane-grid{display:grid; gap:var(--sp-5); align-items:center; grid-template-columns:1fr}
-  @media (min-width:820px){ .pane-grid{grid-template-columns:1.1fr .9fr} }
+  /* S3 · the pin — full-bleed panes, type on image, no columns */
+  .pane{position:relative; min-height:100dvh; display:flex; align-items:center; overflow:hidden; padding-block:var(--sp-6)}
+  .pane-bg{position:absolute; inset:0; z-index:0; overflow:hidden}
+  .pane-bg img{width:100%; height:100%; object-fit:cover; object-position:center 30%}
+  .pane-bg::after{content:""; position:absolute; inset:0;
+    background:linear-gradient(to right, rgba(10,10,12,.82) 0%, rgba(10,10,12,.45) 45%, rgba(10,10,12,.1) 70%)}
+  @media (min-width:820px){
+    .pane-bg img{
+      object-fit:contain; object-position:78% center;
+      -webkit-mask-image:linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+      mask-image:linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+    }
+  }
+  .pane-still .pane-bg{background:radial-gradient(110% 120% at 70% 40%, #3a2a1c 0%, #1d150e 55%, #0d0a08 100%)}
+  .pane-loud .pane-bg{background:radial-gradient(110% 120% at 70% 40%, #1a1220 0%, #0e0a12 55%, #0a0a0c 100%)}
+  .pane-copy{position:relative; z-index:1; max-width:34rem}
   .os-tag{font-family:var(--f-mono); font-size:var(--t-xs); letter-spacing:.24em; text-transform:uppercase; color:var(--dim); margin-bottom:var(--sp-3); display:block}
-  .pane-day .os-tag b{color:var(--glitch); font-weight:400}
-  .pane-night .os-tag b{color:var(--signal-ink); font-weight:400}
+  .pane-still .os-tag b{color:var(--glitch); font-weight:400}
+  .pane-loud .os-tag b{color:var(--signal-ink); font-weight:400}
+  .pin-stage.pinned .pin-viewport{height:100dvh}
+  .pin-stage.pinned .pane{position:absolute; inset:0}
 
+  /* S4 · dates + book, merged over the marina landscape */
   .date-row{
     display:grid; grid-template-columns:8.5rem 1fr auto; gap:var(--sp-3); align-items:center;
-    padding:var(--sp-3) 0; border-bottom:1px solid var(--line);
+    padding:var(--sp-3) 0; border-bottom:1px solid rgba(244,238,241,.18);
   }
   .date-row small{display:block; color:var(--dim); font-size:var(--t-s)}
-  .date-row.past{opacity:.45}
+  .date-row.past{opacity:.5}
   .date-when{color:var(--signal-ink)}
   .past-label{margin-top:var(--sp-4)}
   @media (max-width:560px){ .date-row{grid-template-columns:1fr; gap:.3rem} }
+  #dates{max-width:46rem}
 
-  /* bookstrip — layered depth pair */
-  .bookstrip{position:relative; overflow:hidden; border-block:1px solid var(--line); background:var(--surface); text-align:center}
-  .strip-bg{position:absolute; inset:-12% 0; z-index:0}
-  .strip-bg img{width:100%; height:100%; object-fit:cover; filter:blur(14px) brightness(.35)}
-  .strip-fg{
-    position:relative; z-index:1; width:min(260px,60vw); margin:var(--sp-5) auto 0;
-    border-radius:var(--r-m); overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,.5);
-  }
-  .bookstrip .container{position:relative; z-index:1}
-
+  /* S5 · signal list */
   .newsletter form{display:flex; gap:var(--sp-3); max-width:34rem; flex-wrap:wrap}
   .newsletter input[type=email]{
     flex:1 1 14rem; font:inherit; color:var(--ink); background:var(--surface);
@@ -110,15 +142,15 @@
 </header>
 
 <main id="main">
+  <!-- S1 · the name -->
   <section class="hero">
-    <div class="hero-bg" aria-hidden="true">
-      <!-- hero photo chosen by Lizbeth (photo authority: hers). depth-drift: the room moves slower than the name -->
+    <div class="hero-bg" data-zoom aria-hidden="true">
+      <!-- hero photo chosen by Lizbeth (photo authority: hers).
+           source is 1365px wide (flagged): displayed ≤640px via contain, never upscaled.
+           a ≥3000px export slots in as hero-red-corset-2800.jpg + one srcset line. -->
       <img src="/assets/img/hero-red-corset-1100.jpg" data-drift="5"
            srcset="/assets/img/hero-red-corset-700.jpg 700w, /assets/img/hero-red-corset-1100.jpg 1100w, /assets/img/hero-red-corset-1365.jpg 1365w"
            sizes="(min-width:820px) 640px, 100vw" alt="" fetchpriority="high">
-      <!-- source is 1365px wide (flagged): displayed ≤640px on desktop via contain, so it never upscales.
-           if a ≥3000px export of this shot exists, drop it in as hero-red-corset-2800.jpg and extend the srcset.
-           SHOT LIST #1 (club-wide landscape) stays open for a future full-bleed treatment. -->
     </div>
     <div class="container">
       <p class="status sig-meta">available to book · la and beyond</p>
@@ -138,13 +170,18 @@
     </div>
   </div>
 
-  <section class="section" id="sound">
+  <!-- S2 · the sound (video slot: see css comment) -->
+  <section class="screen" id="sound">
+    <div class="screen-bg sound-bg" data-zoom aria-hidden="true">
+      <img src="/assets/img/sound-blur-700.jpg"
+           srcset="/assets/img/sound-blur-700.jpg 700w, /assets/img/sound-blur-1100.jpg 1100w"
+           sizes="(min-width:820px) 560px, 100vw" loading="lazy" alt="">
+    </div>
     <div class="container">
-      <div class="sweep" aria-hidden="true" style="margin-bottom:var(--sp-5)"></div>
       <span class="eyebrow" data-mt>latest transmission</span>
       <h2 data-tt>the sound</h2>
       <div class="sc-embed" data-mt>
-        <!-- the one eager embed on the site (approved revision 5): a booker hears her without a click -->
+        <!-- the one eager embed on the site (approved revision 5) -->
         <iframe title="soundcloud player — venice beach pop up, live set by lizzy mcwired" height="166" allow="autoplay"
           src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/lizbeth-marquez-358898478/venice-beach-pop-up&color=%23ff2222&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>
       </div>
@@ -152,78 +189,66 @@
     </div>
   </section>
 
-  <!-- booth-pin: scrolling literally switches her operating system.
-       default (no-js / reduced-motion / mobile): two readable stacked blocks. -->
-  <section class="pin-stage" data-pin aria-label="the double life">
+  <!-- S3 · the pin: contained → expansive. same person, volume up.
+       default (no-js / reduced-motion / mobile): two stacked full-bleed blocks. -->
+  <section class="pin-stage" data-pin aria-label="the transformation">
     <div class="pin-viewport">
-      <div class="pane pane-day" data-pane="day">
-        <div class="container pane-grid">
-          <div>
-            <span class="os-tag"><b>os one</b> · 8:04 am</span>
-            <h2 data-tt>legal ops.<br>color-coded. invisible.</h2>
-            <p>a major investment firm, downtown. onsites run like clockwork, strategy one-pagers, nothing allowed to go wrong. competent is the costume.</p>
-          </div>
-          <div class="frame">
-            <!-- interim per Lizbeth 7/30: chci portrait, cool grade = the day OS runs cold.
-                 SHOT LIST #3 (office/elevator shot) remains the ideal replacement. -->
-            <img src="/assets/img/day-chci-700.jpg" class="grade-day"
-                 srcset="/assets/img/day-chci-700.jpg 700w, /assets/img/day-chci-1200.jpg 1200w"
-                 sizes="(min-width:820px) 40vw, 92vw" width="1200" height="1800" loading="lazy"
-                 alt="lizbeth at a chci alumni event — navy dress, step-and-repeat backdrop, composed. the day operating system">
+      <div class="pane pane-still" data-pane="day">
+        <div class="pane-bg" aria-hidden="true">
+          <img src="/assets/img/pin-still-800.jpg"
+               srcset="/assets/img/pin-still-800.jpg 800w, /assets/img/pin-still-1300.jpg 1300w"
+               sizes="(min-width:820px) 640px, 100vw" loading="lazy" alt="">
+        </div>
+        <div class="container">
+          <div class="pane-copy">
+            <span class="os-tag"><b>contained</b></span>
+            <!-- anchor line (hers) as the headline -->
+            <h2 data-tt>never incapable.<br>just uninvited.</h2>
+            <!-- invented line, flagged in BUILD_LOG -->
+            <p>the still version: composed, careful, holding the headphones like a question. she got tired of waiting for a door and built one.</p>
           </div>
         </div>
       </div>
-      <div class="pane pane-night" data-pane="night">
-        <div class="container pane-grid">
-          <div>
-            <span class="os-tag"><b>os two</b> · 11:47 pm</span>
-            <h2 data-tt>same brain.<br>126 bpm. unmasked.</h2>
-            <p>the sound is <strong>adhd house</strong>: tech house, minimal, deep tech — arranged the way hyperfocus actually feels. resident on <strong>algorythm radio</strong>, the recurring <em>no boxes</em> segment.</p>
+      <div class="pane pane-loud" data-pane="night">
+        <div class="pane-bg" aria-hidden="true">
+          <img src="/assets/img/pin-open-800.jpg"
+               srcset="/assets/img/pin-open-800.jpg 800w, /assets/img/pin-open-1300.jpg 1300w"
+               sizes="(min-width:820px) 640px, 100vw" loading="lazy" alt="">
+        </div>
+        <div class="container">
+          <div class="pane-copy">
+            <!-- "same person, volume up" — hers, from the brief -->
+            <span class="os-tag"><b>expansive</b></span>
+            <h2 data-tt>same person.<br>volume up.</h2>
+            <p><strong>adhd house</strong> — music that moves the way my brain does: tech house, minimal, deep tech, arranged the way hyperfocus actually feels. resident on <strong>algorythm radio</strong> — the <em>no boxes</em> segment.</p>
             <p style="margin-top:var(--sp-4)"><a class="mono" style="color:var(--signal-ink)" href="/press/">the full story lives in the press kit →</a></p>
-          </div>
-          <div class="frame">
-            <img src="/assets/img/yacht-focused-700.jpg"
-                 srcset="/assets/img/yacht-focused-700.jpg 700w, /assets/img/yacht-focused-1200.jpg 1200w"
-                 sizes="(min-width:820px) 45vw, 92vw"
-                 width="1200" height="1600" loading="lazy"
-                 alt="lizzy mcwired at the decks — hand on the turntable, focused, red floral dress, city lights behind">
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="dates-section">
+  <!-- S4 · dates + book, one screen over the marina -->
+  <section class="screen" id="dates-section">
+    <div class="screen-bg" data-zoom aria-hidden="true">
+      <img src="/assets/img/marina-800.jpg"
+           srcset="/assets/img/marina-800.jpg 800w, /assets/img/marina-1400.jpg 1400w, /assets/img/marina-2200.jpg 2200w"
+           sizes="100vw" loading="lazy" alt="">
+    </div>
     <div class="container">
-      <div class="sweep" aria-hidden="true" style="margin-bottom:var(--sp-5)"></div>
       <span class="eyebrow" data-mt>transmissions</span>
       <h2 data-tt>dates</h2>
       <div id="dates" data-mt>
         <noscript><p class="lede">dates live at <a href="https://www.instagram.com/lizzy.mcwired">@lizzy.mcwired</a>.</p></noscript>
       </div>
-    </div>
-  </section>
-
-  <section class="section bookstrip">
-    <div class="strip-bg" aria-hidden="true">
-      <img src="/assets/img/yacht-crowd-900.jpg"
-           srcset="/assets/img/yacht-crowd-900.jpg 900w, /assets/img/yacht-crowd-1600.jpg 1600w"
-           sizes="100vw" loading="lazy" alt="" data-drift="8">
-    </div>
-    <div class="container">
-      <span class="eyebrow" data-mt>bookings</span>
-      <h2 data-tt>your dance floor next</h2>
-      <p class="lede" data-mt style="margin-inline:auto">clubs, private events, weddings — la and beyond.</p>
-      <p data-mt style="margin-top:var(--sp-4)"><a class="btn" href="/book/">request availability</a></p>
-      <div class="strip-fg" data-drift="-4">
-        <img src="/assets/img/yacht-arms-open-700.jpg"
-             srcset="/assets/img/yacht-arms-open-700.jpg 700w, /assets/img/yacht-arms-open-1100.jpg 1100w"
-             sizes="260px" width="1100" height="1467" loading="lazy"
-             alt="lizzy mcwired mid-set, arms spread wide at the decks, marina lights behind">
+      <div data-mt style="margin-top:var(--sp-5); display:flex; gap:var(--sp-3); flex-wrap:wrap; align-items:center">
+        <a class="btn" href="/book/">request availability</a>
+        <span class="dim">clubs, private events, weddings — la and beyond.</span>
       </div>
     </div>
   </section>
 
+  <!-- S5 · quiet close -->
   <section class="section newsletter" id="signal">
     <div class="container">
       <span class="eyebrow" data-mt>stay wired in</span>

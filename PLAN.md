@@ -156,11 +156,13 @@ Why not Astro/Eleventy: a build step means Node config in a repo owned by someon
 
 Current library skews hard portrait (yacht 3:4, studio 2:3). The gaps are landscape, the day-job half of the thesis, and product.
 
+**Photo authority (set by Lizbeth 7/30, permanent):** she chooses the hero and any image where she is the subject at large scale. I choose supporting and texture images. I do not re-pick a hero from ASSETS.md descriptions — I can read composition, not whether she looks good in a shot. Any image planned for full-bleed whose source is under 2000px wide gets flagged to her; a slate beats a soft upscale.
+
 | # | filename (placeholder) | orientation / crop | must convey |
 |---|---|---|---|
-| 1 | `hero-club-wide.jpg` | landscape 16:9, subject left or right third, dark negative space for headline | her at the decks in a real club, crowd-scale light — "this is a headliner." Hero of `/`. Nearest stand-in until then: pirate-studios red overhead. |
+| 1 | `hero-club-wide.jpg` | landscape 16:9, subject left or right third, dark negative space for headline | her at the decks in a real club, crowd-scale light — "this is a headliner." **Home hero is now the red-corset EPK portrait (her pick, live);** this shot stays open as a future full-bleed, and any hero swap is hers to call. |
 | 2 | `hero-club-mobile.jpg` | portrait 4:5 crop of the same setup | same moment, recomposed — mobile hero, not a center-crop of #1 |
-| 3 | `double-life-office.jpg` | portrait 2:3, full or 3/4 length, flat corporate light | blazer, badge lanyard, elevator bank or lobby, deadpan face — the Oaktree half. Pairs with a yacht/club shot as the masking diptych on `/lab/` and the long bio |
+| ~~3~~ | ~~`double-life-office.jpg`~~ | **DROPPED 7/30** | The day-job narrative is cut sitewide per Lizbeth: no references to her other career, employer, or badge/office framing anywhere — home, press, lab, bios, meta, alt text. The pin's first pane is now "contained," not "corporate." |
 | 4 | `hands-mixer-macro.jpg` | landscape 3:2, tight crop, shallow depth | hands on CDJ jog/faders, red-corded headphones if possible — craft without the face. Section header on `/mixes/` (exists as video only today) |
 | 5 | `crowd-from-booth.jpg` | landscape 16:9, shot from behind her shoulder over the decks | her silhouette + a lit crowd — "she moves rooms." Proof shot for `/book/` |
 | 6 | `press-landscape.jpg` | landscape 16:9, studio, clean backdrop, eyes to camera | THE missing EPK asset: every current press photo is portrait. Becomes the OG/share image and press download #1 |

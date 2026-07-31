@@ -56,6 +56,13 @@
       scrollTrigger: { trigger: el, start: 'top 92%' } });
   });
 
+  /* ---- scroll-scrubbed scale: the drone-zoom read — 1.15 settles to 1.0 ---- */
+  gsap.utils.toArray('[data-zoom]').forEach(function (el) {
+    var sec = el.closest('section') || el.parentElement;
+    gsap.fromTo(el, { scale: 1.15 }, { scale: 1, ease: 'none', transformOrigin: 'center 40%',
+      scrollTrigger: { trigger: sec, start: 'clamp(top bottom)', end: 'clamp(bottom top)', scrub: 1 } });
+  });
+
   /* ---- depth-drift: background moves slower than foreground ---- */
   gsap.utils.toArray('[data-drift]').forEach(function (el) {
     var amt = parseFloat(el.getAttribute('data-drift')) || 6;
@@ -63,7 +70,7 @@
       scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: 1 } });
   });
 
-  /* ---- booth-pin: scroll switches the operating system (desktop, fine pointer).
+  /* ---- booth-pin: scroll performs the transformation, contained → expansive (desktop, fine pointer).
      gsap.matchMedia so it binds/unbinds live on resize — and cleanly reverts to
      the stacked static layout below 820px. ---- */
   var pin = document.querySelector('[data-pin]');
@@ -74,11 +81,12 @@
       gsap.matchMedia().add('(min-width: 820px) and (pointer: fine)', function () {
         pin.classList.add('pinned');
         gsap.set(night, { xPercent: 8, autoAlpha: 0 });
+        /* +260%: ~2.5 held viewports; a beat of black between the states */
         var tl = gsap.timeline({
-          scrollTrigger: { trigger: pin, start: 'top top', end: '+=140%', scrub: .8, pin: true, anticipatePin: 1 }
+          scrollTrigger: { trigger: pin, start: 'top top', end: '+=260%', scrub: .8, pin: true, anticipatePin: 1 }
         })
-          .to(day, { xPercent: -8, autoAlpha: 0, ease: 'none' }, .12)
-          .to(night, { xPercent: 0, autoAlpha: 1, ease: 'none' }, .3);
+          .to(day, { xPercent: -8, autoAlpha: 0, ease: 'none', duration: .3 }, .12)
+          .to(night, { xPercent: 0, autoAlpha: 1, ease: 'none', duration: .35 }, .55);
         return function () { pin.classList.remove('pinned'); gsap.set([day, night], { clearProps: 'all' }); tl.kill(); };
       });
     }

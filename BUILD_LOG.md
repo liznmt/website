@@ -32,6 +32,32 @@
 - Reduced-motion = complete static site (motion gated behind `html.m-on`, styles only ever REMOVE visibility). Pins desktop-only + fine-pointer.
 - Photo re-picks in MOTION.md §3: hero KEPT (re-cropped for drift), bookstrip gains yacht fg/bg depth pair, lab gets blue-light home-setup + archival two-up, night-OS pane = yacht focused shot. New shots still needed are unchanged from the shot list (slates in place).
 
+### Home restructure + day-job purge (7/30, post-deploy round)
+
+**Day-job narrative CUT SITEWIDE (her call, risk-driven — naming an employer publicly).** Removed every reference to legal operations, corporate work, her employer, "a major investment firm, downtown," and badge/office framing across home, press bios, lab, meta descriptions, and alt text. Verified by grep sweep: zero hits for legal ops / investment firm / oaktree / badge / capitol / congress / double life / two operating systems / day job / chci. CHCI portrait deleted from the repo and returned to the library unused; congressional-badge derivative deleted; shot #3 (office/elevator) struck from the shot list and from `gen_slates.py`.
+
+**The pin survives, re-authored.** Same mechanism, longer hold (+260%, ~2.5 viewports, with a deliberate held beat at 42–55% of the timeline). New content: *contained → expansive*. Pane one is `lizzy-epk-wood-panel-suit-headphones` (still, composed, headphones in hand) under the headline **"never incapable. just uninvited."** — her anchor line. Pane two is `yacht-party-dj-arms-open-wide` (mid-set, arms open) under **"same person. volume up."** — her phrase from the brief. Both panes are from the EPK/yacht sets as instructed, both full-bleed uncropped portraits with type overlaid, no columns.
+
+**INVENTED COPY — flagged for her edit (everything else is her words or prior-approved):**
+1. Pane one body: *"the still version: composed, careful, holding the headphones like a question. she got tired of waiting for a door and built one."*
+2. Pane two body: the adhd-house sentence (*"tech house, minimal, deep tech, arranged the way hyperfocus actually feels"*) — carried over from earlier approved copy, wrapped around her anchor line.
+3. Press long bio, rewritten without the day job: *"locked grooves, quick turns, zero filler"* and the "built her own room" paragraph.
+4. Lab problem pane, de-corporatized: *"when your brain runs on its own rules: leaving the house, landing back home, winding down enough to sleep."*
+5. S4 merged screen kicker: *"clubs, private events, weddings — la and beyond."* (prior approved line, new position).
+
+**Five screens replace seven blocks** per the approved plan: (1) the name, (2) the sound — full-bleed with the video slot marked, (3) the transformation pin, (4) dates+book merged over the marina landscape, (5) quiet close. Portrait sources are never cropped to landscape: desktop full-bleed = uncropped `contain` portrait + canvas-extended atmosphere + edge mask (the treatment the red-corset hero proved). Only the marina shot is a true landscape (2304px source).
+
+**Scroll-scrubbed scale** shipped as `[data-zoom]`: 1.15 → 1.0, scrub 1, transform-only, `transform-origin: center 40%`, applied to screens 1, 2, 4. The 15% overscan doubles as crop insurance so canvas-extension edges never show mid-zoom. Reduced-motion/no-JS renders at 1.0.
+
+**PERFORMANCE — real measured numbers, not shrunk to protect a score:**
+- Home first load: **≈232KB** — 38KB code+css+data, 83KB fonts, 76KB hero (1100w), ~35KB GSAP gz.
+- Lazy below the fold: **347KB** across four full-bleed images (sound-blur 66KB, pin-still 95KB, pin-open 86KB, marina 100KB at the 800w step; larger srcset steps only on wide viewports).
+- Full-page ceiling today: **≈580KB** — under the earlier 750KB projection because every full-bleed is a portrait displayed at ≤640px via `contain`, so the big srcset steps rarely fetch.
+- **Video, when clips land: +8–12MB on the wire for the scrubbed clip**, `preload="none"` + poster, fetch begins one viewport early — never blocks first paint, and it WILL show up in a cold-cache Lighthouse run on that section. Reported, not hidden. If it drags the score below 90 I report the number and propose the cheaper version (play-on-enter, or a 3s loop) rather than silently dropping it.
+- Lighthouse still not runnable from this Mac (no node); run PageSpeed against the deploy.
+
+**Verify:** `?nomotion` → 0 hidden elements, all five screens readable, maxScrollX=0 at 375; motion on → m-on set, 18 ScrollTriggers, 3 zoom triggers bound, pin spacer created with the plateau confirmed at 42–55%; console clean; crawl 8 files 0 broken (fixed: a video-slot code comment contained a literal `src="…"` that the crawler read as a real link); gitignore video exception proven with a probe file — her clips will commit.
+
 ### Motion retrofit of M1–M4 (7/30, per MOTION.md)
 | choice | reasoning | how to reverse |
 |---|---|---|

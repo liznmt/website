@@ -12,4 +12,8 @@ lizzys-lab/
 *.mp4
 *.MP4
 
+# EXCEPTION: deployed scroll-scrub clips live here (see MOTION.md video spec)
+!site/assets/video/
+!site/assets/video/*.mp4
+
 .DS_Store
