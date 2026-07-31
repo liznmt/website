@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>mixes — lizzy mcwired</title>
-<meta name="description" content="sets and selections. tech house, minimal, deep tech.">
+<meta name="description" content="sets and selections by lizzy mcwired. tech house, minimal, deep tech — adhd house. plus the algorythm radio residency.">
 <meta name="theme-color" content="#0a0a0c">
 <link rel="canonical" href="https://lizzymcwired.com/mixes/">
 <meta property="og:title" content="mixes — lizzy mcwired">
-<meta property="og:description" content="sets and selections. tech house, minimal, deep tech.">
-<meta property="og:image" content="https://lizzymcwired.com/assets/img/logo-512.png">
+<meta property="og:description" content="sets and selections. tech house, minimal, deep tech — adhd house.">
+<meta property="og:image" content="https://lizzymcwired.com/assets/img/hero-pirate-red-1600.jpg">
 <meta property="og:type" content="website">
 <script>try{if(localStorage.getItem('lm-mode')==='low')document.documentElement.dataset.mode='low'}catch(e){}</script>
 <link rel="preload" href="/assets/fonts/unbounded-var.woff2" as="font" type="font/woff2" crossorigin>
@@ -18,6 +18,32 @@
 <link rel="stylesheet" href="/assets/css/base.css">
 <link rel="icon" href="/assets/img/favicon-64.png" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<style>
+  .mix-card{margin-bottom:var(--sp-4)}
+  .mix-facade{
+    display:grid; grid-template-columns:auto 1fr auto; gap:var(--sp-4); align-items:center;
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--r-m);
+    padding:var(--sp-4);
+  }
+  .mix-play{
+    width:64px; height:64px; border-radius:50%; flex:none;
+    background:var(--signal); color:#0a0a0c; font-size:22px;
+    display:grid; place-items:center; box-shadow:0 0 24px var(--glow);
+    transition:transform var(--fast) var(--ease), filter var(--fast) var(--ease);
+  }
+  .mix-play:hover{filter:brightness(1.12); transform:scale(1.05)}
+  .mix-facade h3{margin-bottom:.3rem}
+  .mix-sc{text-decoration:none}
+  .mix-sc:hover{color:var(--glitch)}
+  @media (max-width:640px){
+    .mix-facade{grid-template-columns:auto 1fr}
+    .mix-sc{grid-column:2}
+  }
+  .residency{
+    display:grid; gap:var(--sp-5); align-items:center; grid-template-columns:1fr;
+  }
+  @media (min-width:820px){ .residency{grid-template-columns:.9fr 1.1fr} }
+</style>
 </head>
 <body>
 <a class="skip" href="#main">skip to content</a>
@@ -40,10 +66,38 @@
 <main id="main">
   <section class="section" style="padding-top:calc(var(--nav-h) + var(--sp-6))">
     <div class="container">
-      <span class="eyebrow">signal incoming</span>
+      <span class="eyebrow">sets & selections</span>
       <h1 style="font-size:var(--t-3xl)">mixes</h1>
-      <p class="lede" style="margin-top:var(--sp-4)">the sets are being wired in. soundcloud has them meanwhile.</p>
-      <p style="margin-top:var(--sp-4)"><a class="btn btn-ghost" href="/">back to the front</a></p>
+      <p class="lede" style="margin-top:var(--sp-3)">tech house, minimal, deep tech — adhd house. tap play to load a set; nothing streams until you ask it to.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container" id="mixlist">
+      <noscript><p class="lede">the mixes live on <a href="https://soundcloud.com/lizbeth-marquez-358898478">soundcloud</a>.</p></noscript>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container residency">
+      <div class="frame">
+        <!-- SHOT LIST #9: replace slate with algorythm-onair.jpg -->
+        <img src="/assets/img/slates/algorythm-onair.svg" width="1500" height="1000" loading="lazy"
+             alt="placeholder: lizzy on air at algorythm radio — real photo coming">
+      </div>
+      <div>
+        <span class="eyebrow">residency</span>
+        <h2>algorythm radio — <em style="font-style:normal; color:var(--signal-ink)">no boxes</em></h2>
+        <p>a recurring segment about exactly what it sounds like: no genre boxes, no format, selections that follow the brain instead of the algorithm. recaps land here after each episode.</p>
+        <p class="dim" style="margin-top:var(--sp-3)">want the live announcements? <a href="/#signal">the signal list</a> or <a href="https://www.instagram.com/lizzy.mcwired" rel="noopener" target="_blank">@lizzy.mcwired</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="text-align:center; border-block:1px solid var(--line); background:var(--surface)">
+    <div class="container">
+      <p class="lede">heard enough?</p>
+      <p style="margin-top:var(--sp-4)"><a class="btn" href="/book/">book a set</a></p>
     </div>
   </section>
 </main>
@@ -62,5 +116,6 @@
 </footer>
 
 <script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/mixes.js" defer></script>
 </body>
 </html>
