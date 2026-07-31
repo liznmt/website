@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://lizzymcwired.com/">
 <meta property="og:title" content="lizzy mcwired — dj · los angeles">
 <meta property="og:description" content="adhd house — music that moves the way my brain does. bookings, mixes, press.">
-<meta property="og:image" content="https://lizzymcwired.com/assets/img/hero-pirate-red-1600.jpg">
+<meta property="og:image" content="https://lizzymcwired.com/assets/img/og-red-corset.jpg">
 <meta property="og:type" content="website">
 <script>try{if(localStorage.getItem('lm-mode')==='low')document.documentElement.dataset.mode='low'}catch(e){}</script>
 <link rel="preload" href="/assets/fonts/unbounded-var.woff2" as="font" type="font/woff2" crossorigin>
@@ -25,12 +25,25 @@
     padding-block:calc(var(--nav-h) + var(--sp-5)) var(--sp-6);
     overflow:hidden;
   }
-  .hero-bg{position:absolute; inset:-8% 0; z-index:-1; overflow:hidden}
-  .hero-bg img{width:100%; height:100%; object-fit:cover; object-position:70% 45%}
+  .hero-bg{
+    position:absolute; inset:-8% 0; z-index:-1; overflow:hidden;
+    /* canvas extension: the photo's own red backdrop continues edge to edge —
+       full portrait shown uncropped on desktop, zero upscaling */
+    background:radial-gradient(120% 120% at 52% 38%, #c31114 0%, #8f0c0f 55%, #4a0607 100%);
+  }
+  .hero-bg img{width:100%; height:100%; object-fit:cover; object-position:center 22%}
+  @media (min-width:820px){
+    .hero-bg img{
+      object-fit:contain; object-position:68% 30%;
+      -webkit-mask-image:linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+      mask-image:linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+    }
+  }
   .hero-bg::after{
     content:""; position:absolute; inset:0;
-    background:linear-gradient(to top, var(--bg) 4%, rgba(10,10,12,.55) 45%, rgba(10,10,12,.35));
+    background:linear-gradient(to top, var(--bg) 4%, rgba(10,10,12,.45) 40%, rgba(10,10,12,.15));
   }
+  .grade-day{filter:saturate(.35) hue-rotate(-12deg) contrast(1.06) brightness(.92)}
   .status{
     display:inline-flex; align-items:center; gap:.5rem;
     font-family:var(--f-mono); font-size:var(--t-xs); letter-spacing:.2em; text-transform:uppercase;
@@ -99,11 +112,13 @@
 <main id="main">
   <section class="hero">
     <div class="hero-bg" aria-hidden="true">
-      <!-- depth-drift: the room moves slower than the name — you're walking in -->
-      <img src="/assets/img/hero-pirate-red-960.jpg" data-drift="6"
-           srcset="/assets/img/hero-pirate-red-480.jpg 480w, /assets/img/hero-pirate-red-960.jpg 960w, /assets/img/hero-pirate-red-1600.jpg 1600w"
-           sizes="100vw" alt="" fetchpriority="high">
-      <!-- SHOT LIST #1: replace with hero-club-wide.jpg when it exists -->
+      <!-- hero photo chosen by Lizbeth (photo authority: hers). depth-drift: the room moves slower than the name -->
+      <img src="/assets/img/hero-red-corset-1100.jpg" data-drift="5"
+           srcset="/assets/img/hero-red-corset-700.jpg 700w, /assets/img/hero-red-corset-1100.jpg 1100w, /assets/img/hero-red-corset-1365.jpg 1365w"
+           sizes="(min-width:820px) 640px, 100vw" alt="" fetchpriority="high">
+      <!-- source is 1365px wide (flagged): displayed ≤640px on desktop via contain, so it never upscales.
+           if a ≥3000px export of this shot exists, drop it in as hero-red-corset-2800.jpg and extend the srcset.
+           SHOT LIST #1 (club-wide landscape) stays open for a future full-bleed treatment. -->
     </div>
     <div class="container">
       <p class="status sig-meta">available to book · la and beyond</p>
@@ -149,9 +164,12 @@
             <p>a major investment firm, downtown. onsites run like clockwork, strategy one-pagers, nothing allowed to go wrong. competent is the costume.</p>
           </div>
           <div class="frame">
-            <!-- SHOT LIST #3: double-life-office.jpg replaces this slate -->
-            <img src="/assets/img/slates/double-life-office.svg" width="1000" height="1500" loading="lazy"
-                 alt="placeholder: lizzy in corporate wear at the office — the day-job half of the double life">
+            <!-- interim per Lizbeth 7/30: chci portrait, cool grade = the day OS runs cold.
+                 SHOT LIST #3 (office/elevator shot) remains the ideal replacement. -->
+            <img src="/assets/img/day-chci-700.jpg" class="grade-day"
+                 srcset="/assets/img/day-chci-700.jpg 700w, /assets/img/day-chci-1200.jpg 1200w"
+                 sizes="(min-width:820px) 40vw, 92vw" width="1200" height="1800" loading="lazy"
+                 alt="lizbeth at a chci alumni event — navy dress, step-and-repeat backdrop, composed. the day operating system">
           </div>
         </div>
       </div>

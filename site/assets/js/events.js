@@ -28,6 +28,16 @@
                     .sort(function (a, b) { return a.date > b.date ? -1 : 1; }).slice(0, 3);
 
       box.textContent = '';
+      if (data.residency) {
+        var res = document.createElement('div');
+        res.className = 'date-row';
+        res.innerHTML =
+          '<span class="mono date-when">recurring</span>' +
+          '<span class="date-name">' + data.residency.name + '<small>' + data.residency.cadence +
+          (data.residency.note ? ' · ' + data.residency.note : '') + '</small></span>' +
+          '<a class="mono date-tix" style="text-decoration:none;color:var(--signal-ink)" href="/mixes/">recaps →</a>';
+        box.appendChild(res);
+      }
       if (upcoming.length) {
         upcoming.forEach(function (e) { box.appendChild(row(e, false)); });
       } else {
