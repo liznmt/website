@@ -1,9 +1,21 @@
 # BUILD_LOG — lizzymcwired.com rebuild
 
-## Status: milestone 2 of 6 COMPLETE (committed locally; push blocked — see Blocked). Milestone 3 (mixes) next.
+## Status: M1–M4 COMPLETE (committed locally; push blocked — see Blocked). HALT-level motion re-plan DELIVERED (MOTION.md, 7/30) per Lizbeth's mid-build direction change. Now executing: motion retrofit of M1–M4, then M5, M6.
 
 ## Next action
-Build `/mixes/`: render `site/data/mixes.json` — first mix as eager embed is ALREADY on home; on /mixes/ ALL embeds are click-to-load facades (poster + play button, revision 5). Add Algorythm residency block (uses `algorythm-onair` slate until the shot exists). If resuming cold: PLAN.md is the spec (approved 7/30 + 8 revisions at top); this repo (`liznmt/website`) is the build repo; `~/Desktop/lizzys-lab` is REFERENCE ONLY; serve with `python3 -m http.server 8899 --directory site`; ALWAYS `cd /Users/lizzyslab/Desktop/website` first (cwd drifts).
+Implement MOTION.md: (1) motion tokens + `assets/js/motion.js` + GSAP/ScrollTrigger CDN in all shells, gated behind `html.m-on` (fallback-first); (2) home retrofit — signal-in hero, depth-drift, double-life section rebuilt as booth-pin, bookstrip layered pair (arms-open-wide over friends-dancing-booth), track-title, chrome-sweep; (3) mixes/press light retrofit (transmission + tilt-card); (4) M5 book+lab motion-native. If resuming cold: read MOTION.md first, then PLAN.md; repo `liznmt/website` is the build repo; `~/Desktop/lizzys-lab` REFERENCE ONLY; serve `python3 -m http.server 8899 --directory site`; ALWAYS `cd /Users/lizzyslab/Desktop/website` first.
+
+### Motion re-plan (7/30, HALT-level, direction from Lizbeth mid-M4)
+- Direction received mid-M4: motion becomes foundation-level; finish current milestone, deliver spec/plan/photo-repicks/retrofit-costs before resuming. Delivered as **MOTION.md** (repo root). M4 was completed and committed first, per "STOP after the current milestone."
+- Engine: GSAP 3 + ScrollTrigger via cdnjs (~35KB gz, deferred). Honest perf cost stated in MOTION.md §0: ~2–4 mobile perf points; budget holds. Press page deliberately gets NO pin (promoter speed) — stated tradeoff, not a silent drop.
+- Reduced-motion = complete static site (motion gated behind `html.m-on`, styles only ever REMOVE visibility). Pins desktop-only + fine-pointer.
+- Photo re-picks in MOTION.md §3: hero KEPT (re-cropped for drift), bookstrip gains yacht fg/bg depth pair, lab gets blue-light home-setup + archival two-up, night-OS pane = yacht focused shot. New shots still needed are unchanged from the shot list (slates in place).
+
+### M3 — mixes (7/30)
+Facade cards from mixes.json (0 third-party bytes until play tapped — verified: 0 iframes before click, 1 after), residency block w/ slate, /#signal anchor fix. Verify: console clean, crawl 8 files 0 broken.
+
+### M4 — press (7/30)
+Facts grid (NO phone, NO fee — "rates on request"), short+long bio w/ copy buttons (+execCommand fallback), 10 downloadable assets (800/3000px) + 9MB zip, credits (andrew leon-bercovich; ysla25 "your shot"), expanded rider (defaults beyond "RX3 or CDJs" — **flag: confirm rider details**), selected performances, JSON-LD. Private rate-card template at `/rate-card/` OUTSIDE publish dir, placeholders only (no real numbers committed). Verify: crawl 8 files 0 broken, console clean. **Flag for Lizbeth:** bios written by me; "13.7k views/30 days" stat from the old site was left OUT pending verification — add back if real.
 
 ### M2 — home (7/30)
 | choice | reasoning | how to reverse |
