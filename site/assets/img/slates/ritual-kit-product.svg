@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-label="placeholder: ritual-kit-product">
+<rect width="1200" height="1200" fill="#131316"/>
+<rect x="1.5" y="1.5" width="1197" height="1197" fill="none" stroke="#9a9aa4" stroke-opacity=".45" stroke-width="3"/>
+<line x1="0" y1="0" x2="1200" y2="1200" stroke="#f4eef1" stroke-opacity=".07" stroke-width="2"/>
+<line x1="1200" y1="0" x2="0" y2="1200" stroke="#f4eef1" stroke-opacity=".07" stroke-width="2"/>
+<text x="50%" y="46%" text-anchor="middle" fill="#ff4444" font-family="Menlo,monospace" font-size="35" letter-spacing="4">ritual-kit-product.jpg</text>
+<text x="50%" y="53%" text-anchor="middle" fill="#f4eef1" fill-opacity=".55" font-family="Menlo,monospace" font-size="21">1200 x 1200 — 1:1</text>
+<text x="50%" y="60%" text-anchor="middle" fill="#f4eef1" fill-opacity=".35" font-family="Menlo,monospace" font-size="21">three nfc coins on chrome, hard product light</text>
+</svg>

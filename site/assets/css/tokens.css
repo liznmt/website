@@ -1,0 +1,79 @@
+/* lizzy mcwired — design tokens
+   direction: "chrome and signal" — near-black, ink, signal red, rare cyan glitch,
+   chrome metallic for borders/dividers. see PLAN.md §3. */
+
+@font-face{
+  font-family:'Unbounded';
+  src:url('../fonts/unbounded-var.woff2') format('woff2');
+  font-weight:200 900; font-display:swap;
+}
+@font-face{
+  font-family:'Space Grotesk';
+  src:url('../fonts/space-grotesk-var.woff2') format('woff2');
+  font-weight:300 700; font-display:swap;
+}
+@font-face{
+  font-family:'Space Mono';
+  src:url('../fonts/space-mono-400.woff2') format('woff2');
+  font-weight:400; font-display:swap;
+}
+
+:root{
+  /* color */
+  --bg:#0a0a0c;
+  --surface:#131316;
+  --surface-2:#1a1a1f;
+  --ink:#f4eef1;
+  --dim:rgba(244,238,241,.58);
+  --faint:rgba(244,238,241,.28);
+  --line:rgba(244,238,241,.12);
+  --signal:#ff2222;
+  --signal-ink:#ff4444;        /* red used AS text on dark — slightly lifted for contrast */
+  --signal-soft:rgba(255,34,34,.12);
+  --glitch:#29e6ff;
+  --chrome:linear-gradient(160deg,#e8e8ec 0%,#9a9aa4 45%,#f2f2f6 100%);
+  --glow:rgba(255,34,34,.28);
+
+  /* type */
+  --f-display:'Unbounded',system-ui,sans-serif;
+  --f-body:'Space Grotesk',system-ui,sans-serif;
+  --f-mono:'Space Mono',ui-monospace,monospace;
+  --t-xs:.75rem;      /* 12 */
+  --t-s:.875rem;      /* 14 */
+  --t-base:1.0625rem; /* 17 */
+  --t-l:1.3125rem;    /* 21 */
+  --t-xl:1.75rem;     /* 28 */
+  --t-2xl:clamp(2rem,5vw,2.625rem);
+  --t-3xl:clamp(2.75rem,7vw,4rem);
+  --t-hero:clamp(3.5rem,10vw,6rem);
+
+  /* space & shape */
+  --sp-1:.25rem; --sp-2:.5rem; --sp-3:1rem; --sp-4:1.5rem;
+  --sp-5:2.5rem; --sp-6:4rem; --sp-7:6.5rem;
+  --r-s:.5rem; --r-m:1rem; --r-l:1.25rem;
+  --container:72rem;
+  --nav-h:4rem;
+
+  /* motion */
+  --ease:cubic-bezier(.22,.8,.3,1);
+  --fast:180ms; --med:280ms;
+
+  color-scheme:dark;
+}
+
+/* low-light mode: dimmer everything, red pulled back, glows off, media dimmed.
+   toggled via data-mode="low" on <html>, persisted in localStorage. */
+:root[data-mode="low"]{
+  --bg:#050506;
+  --surface:#0b0b0d;
+  --surface-2:#101013;
+  --ink:#d9d3d6;
+  --dim:rgba(217,211,214,.5);
+  --signal:#b31b1b;
+  --signal-ink:#d63a3a;
+  --glitch:#1fa8bd;
+  --glow:transparent;
+}
+:root[data-mode="low"] img,
+:root[data-mode="low"] video,
+:root[data-mode="low"] iframe{ filter:brightness(.8); }

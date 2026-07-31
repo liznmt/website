@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="placeholder: press-landscape">
+<rect width="1600" height="900" fill="#131316"/>
+<rect x="1.5" y="1.5" width="1597" height="897" fill="none" stroke="#9a9aa4" stroke-opacity=".45" stroke-width="3"/>
+<line x1="0" y1="0" x2="1600" y2="900" stroke="#f4eef1" stroke-opacity=".07" stroke-width="2"/>
+<line x1="1600" y1="0" x2="0" y2="900" stroke="#f4eef1" stroke-opacity=".07" stroke-width="2"/>
+<text x="50%" y="46%" text-anchor="middle" fill="#ff4444" font-family="Menlo,monospace" font-size="47" letter-spacing="4">press-landscape.jpg</text>
+<text x="50%" y="53%" text-anchor="middle" fill="#f4eef1" fill-opacity=".55" font-family="Menlo,monospace" font-size="29">1600 x 900 — 16:9</text>
+<text x="50%" y="60%" text-anchor="middle" fill="#f4eef1" fill-opacity=".35" font-family="Menlo,monospace" font-size="29">studio, clean backdrop, eyes to camera — the missing landscape press shot</text>
+</svg>

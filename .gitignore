@@ -1,0 +1,15 @@
+# lizzys-lab repo is REFERENCE ONLY — separate repo, its own Netlify deploy.
+# Never commit its contents here. Copy specific files deliberately if needed.
+lizzyslab/
+lizzys-lab/
+
+# raw media library stays local — only optimized derivatives inside site/ are committed
+# (anchored to repo root so site/press/ etc. stay committable)
+/photos/
+/press/
+*.mov
+*.MOV
+*.mp4
+*.MP4
+
+.DS_Store

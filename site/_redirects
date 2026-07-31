@@ -1,0 +1,10 @@
+# shrine / wall / booth live on the lizzys-lab deploy (canonical: lllaunch.netlify.app).
+# safety net: if any NFC coin encodes lizzymcwired.com/*.html, it resolves again after cutover.
+/ritual.html   https://lllaunch.netlify.app/ritual.html   302
+/wall.html     https://lllaunch.netlify.app/wall.html     302
+/booth.html    https://lllaunch.netlify.app/booth.html    302
+
+# legacy one-pager anchors
+/#mixes    /mixes/    301
+/#events   /          301
+/#connect  /book/     301
