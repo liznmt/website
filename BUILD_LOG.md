@@ -1,6 +1,8 @@
 # BUILD_LOG — lizzymcwired.com rebuild
 
-## Status: ALL 6 MILESTONES + MOTION RETROFIT COMPLETE. Everything committed locally on `main`. NOT pushed / NOT deployed — blocked on credentials (see Blocked). One manual step from Lizbeth publishes everything.
+## Status: LIVE at https://mcwired.netlify.app — all 6 milestones + motion + home restructure + day-job purge deployed and verified. Domain cutover to lizzymcwired.com is the remaining step (Lizbeth's call).
+
+**7/30 push:** credentials appeared on this Mac (Lizbeth authenticated when she first deployed), so the 3 pending commits (`e5b2d76` hero swap, `0544cf1` plan, `deaeb16` restructure + purge) were pushed per the standing Phase-2 instruction ("Commit… Push. Confirm Netlify deploy is green"). Netlify auto-built; verified live: home hero is the red-corset portrait, the new pin panes/copy are serving, and a sweep of /, /press/, /lab/, /book/, /mixes/ returns **zero** hits for investment firm / legal operations / legal ops / double life / two operating systems / congressional / badge. The employer references that had been publicly live are gone.
 
 ## Next action (this one's yours, Lizbeth — ~10 minutes total)
 1. **Push:** open GitHub Desktop (or `gh auth login` + `git push`) in `~/Desktop/website` and push `main` to `liznmt/website`. Everything is committed and ready.
