@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>lizzy's lab — the company</title>
-<meta name="description" content="the company behind the dj. ritual kit, neuro-inclusive tools.">
+<meta name="description" content="lizzy's lab: neuro-inclusive sensory tools by the dj who needed them. the ritual kit — nfc coins that shift your environment with one tap. 15-unit pilot, september 2026.">
 <meta name="theme-color" content="#0a0a0c">
 <link rel="canonical" href="https://lizzymcwired.com/lab/">
 <meta property="og:title" content="lizzy's lab — the company">
-<meta property="og:description" content="the company behind the dj. ritual kit, neuro-inclusive tools.">
-<meta property="og:image" content="https://lizzymcwired.com/assets/img/logo-512.png">
+<meta property="og:description" content="neuro-inclusive sensory tools by the dj who needed them. ritual kit pilot: september 2026.">
+<meta property="og:image" content="https://lizzymcwired.com/assets/img/lab-blue-1400.jpg">
 <meta property="og:type" content="website">
 <script>try{if(localStorage.getItem('lm-mode')==='low')document.documentElement.dataset.mode='low'}catch(e){}</script>
 <link rel="preload" href="/assets/fonts/unbounded-var.woff2" as="font" type="font/woff2" crossorigin>
@@ -18,6 +18,21 @@
 <link rel="stylesheet" href="/assets/css/base.css">
 <link rel="icon" href="/assets/img/favicon-64.png" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<style>
+  .lab-hero{position:relative; overflow:hidden}
+  .lab-hero .frame{margin-top:var(--sp-5)}
+  .pane-grid{display:grid; gap:var(--sp-5); align-items:center; grid-template-columns:1fr}
+  @media (min-width:820px){ .pane-grid{grid-template-columns:1.1fr .9fr} }
+  .os-tag{font-family:var(--f-mono); font-size:var(--t-xs); letter-spacing:.24em; text-transform:uppercase; color:var(--dim); margin-bottom:var(--sp-3); display:block}
+  .pane-day .os-tag b{color:var(--glitch); font-weight:400}
+  .pane-night .os-tag b{color:var(--signal-ink); font-weight:400}
+  .receipts{display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-4); max-width:44rem}
+  .receipts figcaption{font-family:var(--f-mono); font-size:var(--t-xs); color:var(--dim); margin-top:.5rem}
+  .waitlist form{display:flex; gap:var(--sp-3); max-width:40rem; flex-wrap:wrap}
+  .waitlist input[type=email]{flex:1 1 13rem; font:inherit; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:var(--r-s); padding:.9rem 1rem}
+  .waitlist select{flex:0 1 auto; font:inherit; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:var(--r-s); padding:.9rem 1rem}
+  .waitlist input:focus,.waitlist select:focus{outline:2px solid var(--glitch); border-color:transparent}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">skip to content</a>
@@ -38,12 +53,91 @@
 </header>
 
 <main id="main">
-  <section class="section" style="padding-top:calc(var(--nav-h) + var(--sp-6))">
+  <section class="section lab-hero" style="padding-top:calc(var(--nav-h) + var(--sp-6))">
     <div class="container">
       <span class="eyebrow">the company</span>
       <h1 style="font-size:var(--t-3xl)" data-tt>lizzy's lab</h1>
-      <p class="lede" style="margin-top:var(--sp-4)">the lab door is being hung. it opens soon.</p>
-      <p style="margin-top:var(--sp-4)"><a class="btn btn-ghost" href="/">back to the front</a></p>
+      <p class="lede" style="margin-top:var(--sp-3); max-width:44ch">"i was never incapable. just uninvited." she built the invitation — then started building the tools.</p>
+      <div class="frame" style="overflow:hidden">
+        <img src="/assets/img/lab-blue-800.jpg" data-drift="5"
+             srcset="/assets/img/lab-blue-800.jpg 800w, /assets/img/lab-blue-1400.jpg 1400w"
+             sizes="(min-width:1200px) 1100px, 92vw" width="1400" height="787" loading="lazy"
+             alt="the home lab — pioneer controller in blue and purple light, ucla diploma on the wall">
+      </div>
+    </div>
+  </section>
+
+  <!-- lab pin: scroll turns the problem into the product.
+       default (no-js / reduced-motion / mobile): two readable stacked blocks. -->
+  <section class="pin-stage" data-pin aria-label="why the ritual kit exists">
+    <div class="pin-viewport">
+      <div class="pane pane-day" data-pane="day">
+        <div class="container pane-grid">
+          <div>
+            <span class="os-tag"><b>the problem</b> · every single day</span>
+            <h2 data-tt>the executive<br>function tax</h2>
+            <p>every transition costs extra when your brain runs its own os: leaving for work, landing back home, winding down enough to sleep. the tax is invisible, daily, and compounding — willpower was never the fix. architecture is.</p>
+          </div>
+          <div class="frame">
+            <img src="/assets/img/receipt-congress-700.jpg" width="700" height="525" loading="lazy"
+                 alt="congressional intern badge, house of representatives seal — proof the corporate os works">
+          </div>
+        </div>
+      </div>
+      <div class="pane pane-night" data-pane="night">
+        <div class="container pane-grid">
+          <div>
+            <span class="os-tag"><b>the product</b> · one tap</span>
+            <h2 data-tt>the ritual kit</h2>
+            <p>three nfc coins. tap one and your environment shifts — lights, sound, timers, the whole landing sequence — no decisions required. built by the person who needed it, tested nightly in her own hallway.</p>
+            <p class="dim" style="margin-top:var(--sp-3)"><strong style="color:var(--signal-ink)">15-unit pilot — september 2026.</strong> small on purpose: real landed costs, real wear, real feedback before anything scales.</p>
+          </div>
+          <div class="frame" style="aspect-ratio:1/1">
+            <!-- SHOT LIST #7: ritual-kit-product.jpg replaces this slate -->
+            <img src="/assets/img/slates/ritual-kit-product.svg" width="1200" height="1200" loading="lazy"
+                 alt="placeholder: the three nfc ritual coins on chrome — product photo coming with the september pilot">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="sweep" aria-hidden="true" style="margin-bottom:var(--sp-5)"></div>
+      <span class="eyebrow" data-mt>receipts</span>
+      <h2 data-tt>both operating systems, documented</h2>
+      <p data-mt class="dim" style="margin-bottom:var(--sp-4)">the archival material doesn't dance. evidence shouldn't.</p>
+      <div class="receipts" data-mt-group data-mt>
+        <figure>
+          <div class="frame"><img src="/assets/img/receipt-ucla-700.jpg" width="700" height="525" loading="lazy" alt="ucla graduation day — blue and gold stole, decorated cap, brick campus behind"></div>
+          <figcaption>ucla, first-gen graduate</figcaption>
+        </figure>
+        <figure>
+          <div class="frame"><img src="/assets/img/receipt-congress-700.jpg" width="700" height="525" loading="lazy" alt="congressional intern id badge with the house of representatives seal"></div>
+          <figcaption>capitol hill, before the decks</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section waitlist" style="border-block:1px solid var(--line); background:var(--surface)">
+    <div class="container">
+      <span class="eyebrow" data-mt>the pilot list</span>
+      <h2 data-tt>want in on the 15?</h2>
+      <p data-mt style="margin-bottom:var(--sp-4)">pilot units, bulk interest, or partnership — one form, sorted by hand. no drip, no countdown timers.</p>
+      <form data-mt name="waitlist" method="POST" action="/thanks/?from=lab" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="waitlist">
+        <p class="hp"><label>don't fill this in: <input name="bot-field"></label></p>
+        <input type="email" name="email" required placeholder="your@email.com" aria-label="email address">
+        <select name="interest" aria-label="interest">
+          <option>pilot unit (just me)</option>
+          <option>bulk / team order</option>
+          <option>partnership / press</option>
+        </select>
+        <button class="btn" type="submit">join the list</button>
+      </form>
+      <p class="dim mono" data-mt style="margin-top:var(--sp-4); font-size:var(--t-xs)">// neuroinclusion consulting for teams opens late 2026 — <a href="mailto:bookings@lizzymcwired.com" style="color:var(--dim)">email to start early</a></p>
     </div>
   </section>
 </main>

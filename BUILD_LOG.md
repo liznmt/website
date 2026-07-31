@@ -1,9 +1,20 @@
 # BUILD_LOG — lizzymcwired.com rebuild
 
-## Status: M1–M4 COMPLETE (committed locally; push blocked — see Blocked). HALT-level motion re-plan DELIVERED (MOTION.md, 7/30) per Lizbeth's mid-build direction change. Now executing: motion retrofit of M1–M4, then M5, M6.
+## Status: M1–M5 COMPLETE + motion retrofit COMPLETE (all committed locally; push blocked — see Blocked). M6 (hardening + analytics + handoff) in progress.
 
 ## Next action
-Implement MOTION.md: (1) motion tokens + `assets/js/motion.js` + GSAP/ScrollTrigger CDN in all shells, gated behind `html.m-on` (fallback-first); (2) home retrofit — signal-in hero, depth-drift, double-life section rebuilt as booth-pin, bookstrip layered pair (arms-open-wide over friends-dancing-booth), track-title, chrome-sweep; (3) mixes/press light retrofit (transmission + tilt-card); (4) M5 book+lab motion-native. If resuming cold: read MOTION.md first, then PLAN.md; repo `liznmt/website` is the build repo; `~/Desktop/lizzys-lab` REFERENCE ONLY; serve `python3 -m http.server 8899 --directory site`; ALWAYS `cd /Users/lizzyslab/Desktop/website` first.
+M6: `/work/` already stubbed (stays unlisted); add `sitemap.xml` + `robots.txt`; analytics (GoatCounter snippet gated on a site-code constant — Lizbeth creates the free account, fills one line; /thanks/?from=book pageview = booking conversion per revision 7); OG/meta audit; full crawl + console sweep; final BUILD_LOG + one-report. If resuming cold: read MOTION.md then PLAN.md; repo `liznmt/website`; `~/Desktop/lizzys-lab` REFERENCE ONLY; serve `python3 -m http.server 8899 --directory site`; ALWAYS `cd /Users/lizzyslab/Desktop/website` first.
+
+### M5 — book + lab (7/30)
+| choice | reasoning | how to reverse |
+|---|---|---|
+| Booking form fields: name, email, event-type, date-as-text ("a saturday in november" allowed), venue, budget band (optional), message; action=/thanks/?from=book | structured enough to quote from, loose enough to not scare off a text-first bride; ?from=book makes the thank-you pageview a countable booking conversion (revision 7) | edit the form |
+| Budget bands under/500/1k/2.5k+ with "prefer to say later" default | anchors nothing publicly (revision 6 spirit), skips an email round when the booker volunteers it | edit options |
+| Lab pin reuses the SAME booth-pin code: pane-day = "the executive function tax", pane-night = "the ritual kit" | one pin implementation site-wide; scroll literally converts the problem into the product | swap pane content |
+| Ritual Kit copy: "15-unit pilot — september 2026", no prices published | launch-doc timeline; pricing tiers exist internally but nothing sellable is live yet — publishing prices before the store exists creates support email, not sales | add pricing when the store is real |
+| Waitlist form (email + interest: pilot/bulk/partnership), action=/thanks/?from=lab | one form for revision on the old site's three separate CTAs | edit options |
+| Receipts row: ucla + congressional badge, deliberately static | MOTION.md §3 — "evidence doesn't dance"; congressional badge also anchors the pin's problem pane (appears twice on the page — accepted, it's the same receipt cited twice) | swap images |
+**Verify:** forms present with honeypots + hidden form-name (Netlify capture testable only post-deploy); `?nomotion` on both pages: 0 hidden elements, maxScrollX=0 at 375; console clean; crawl 8 files 0 broken.
 
 ### Motion re-plan (7/30, HALT-level, direction from Lizbeth mid-M4)
 - Direction received mid-M4: motion becomes foundation-level; finish current milestone, deliver spec/plan/photo-repicks/retrofit-costs before resuming. Delivered as **MOTION.md** (repo root). M4 was completed and committed first, per "STOP after the current milestone."

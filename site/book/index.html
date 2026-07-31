@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>book — lizzy mcwired</title>
-<meta name="description" content="book lizzy mcwired. clubs, private events, weddings — la and beyond.">
+<meta name="description" content="book lizzy mcwired. clubs, private events, weddings — la and beyond. tell her about the room; answered within 48 hours.">
 <meta name="theme-color" content="#0a0a0c">
 <link rel="canonical" href="https://lizzymcwired.com/book/">
 <meta property="og:title" content="book — lizzy mcwired">
-<meta property="og:description" content="book lizzy mcwired. clubs, private events, weddings — la and beyond.">
-<meta property="og:image" content="https://lizzymcwired.com/assets/img/logo-512.png">
+<meta property="og:description" content="clubs, private events, weddings — la and beyond.">
+<meta property="og:image" content="https://lizzymcwired.com/assets/img/hero-pirate-red-1600.jpg">
 <meta property="og:type" content="website">
 <script>try{if(localStorage.getItem('lm-mode')==='low')document.documentElement.dataset.mode='low'}catch(e){}</script>
 <link rel="preload" href="/assets/fonts/unbounded-var.woff2" as="font" type="font/woff2" crossorigin>
@@ -18,6 +18,16 @@
 <link rel="stylesheet" href="/assets/css/base.css">
 <link rel="icon" href="/assets/img/favicon-64.png" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<style>
+  .book-grid{display:grid; gap:var(--sp-5); grid-template-columns:1fr}
+  @media (min-width:900px){ .book-grid{grid-template-columns:1.2fr .8fr} }
+  .book-form{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-m); padding:var(--sp-4)}
+  .field-row{display:grid; gap:var(--sp-3); grid-template-columns:1fr}
+  @media (min-width:640px){ .field-row{grid-template-columns:1fr 1fr} }
+  .aside-note{border-left:2px solid var(--signal); background:var(--signal-soft); border-radius:0 var(--r-m) var(--r-m) 0; padding:var(--sp-3) var(--sp-4)}
+  .aside-note + .aside-note{margin-top:var(--sp-3)}
+  .aside-note .mono{color:var(--signal-ink)}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">skip to content</a>
@@ -33,7 +43,7 @@
         <li><a href="/lab/">the lab</a></li>
       </ul>
     </nav>
-    <a class="nav-book" href="/book/">book</a>
+    <a class="nav-book" href="/book/" aria-current="page">book</a>
   </div>
 </header>
 
@@ -42,8 +52,79 @@
     <div class="container">
       <span class="eyebrow">la and beyond</span>
       <h1 style="font-size:var(--t-3xl)" data-tt>book a set</h1>
-      <p class="lede" style="margin-top:var(--sp-4)">the form is being soldered. meanwhile: <a href="mailto:bookings@lizzymcwired.com">bookings@lizzymcwired.com</a>.</p>
-      <p style="margin-top:var(--sp-4)"><a class="btn btn-ghost" href="/">back to the front</a></p>
+      <p class="lede" style="margin-top:var(--sp-3)">clubs, private events, weddings. tell her about the room — every answer below makes the quote faster.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container book-grid">
+      <form class="book-form" name="booking" method="POST" action="/thanks/?from=book" data-netlify="true" netlify-honeypot="bot-field" data-mt>
+        <input type="hidden" name="form-name" value="booking">
+        <p class="hp"><label>don't fill this in: <input name="bot-field"></label></p>
+        <div class="field-row">
+          <div class="field">
+            <label for="b-name">your name</label>
+            <input id="b-name" name="name" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="b-email">email</label>
+            <input id="b-email" name="email" type="email" required autocomplete="email">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="b-type">event type</label>
+            <select id="b-type" name="event-type" required>
+              <option value="">pick one</option>
+              <option>club night</option>
+              <option>private event</option>
+              <option>wedding</option>
+              <option>corporate</option>
+              <option>brand / content</option>
+              <option>something else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="b-date">date (or rough window)</label>
+            <input id="b-date" name="date" placeholder="oct 18, or 'a saturday in november'">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="b-venue">venue / city</label>
+            <input id="b-venue" name="venue" placeholder="name it, even if it's a backyard">
+          </div>
+          <div class="field">
+            <label for="b-budget">budget band</label>
+            <select id="b-budget" name="budget">
+              <option value="">prefer to say later</option>
+              <option>under $500</option>
+              <option>$500–$1,000</option>
+              <option>$1,000–$2,500</option>
+              <option>$2,500+</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="b-msg">the room, the crowd, the vibe</label>
+          <textarea id="b-msg" name="message" rows="5" placeholder="what's the moment you're hoping for?"></textarea>
+        </div>
+        <button class="btn" type="submit" style="width:100%">request availability</button>
+      </form>
+      <div data-mt-group data-mt>
+        <div class="aside-note">
+          <p class="mono" style="margin-bottom:.4rem">// response time</p>
+          <p>answered by a human within 48 hours — usually the same evening, after the decks cool down.</p>
+        </div>
+        <div class="aside-note">
+          <p class="mono" style="margin-bottom:.4rem">// rates</p>
+          <p>quoted per room, not per template. the budget band just skips a round of email tag.</p>
+        </div>
+        <div class="aside-note">
+          <p class="mono" style="margin-bottom:.4rem">// the sound</p>
+          <p>tech house, minimal, deep tech — read the <a href="/press/">press kit</a> or <a href="/mixes/">hear a set</a> first if you want receipts.</p>
+        </div>
+      </div>
     </div>
   </section>
 </main>
