@@ -1,9 +1,19 @@
 # BUILD_LOG — lizzymcwired.com rebuild
 
-## Status: M1–M5 COMPLETE + motion retrofit COMPLETE (all committed locally; push blocked — see Blocked). M6 (hardening + analytics + handoff) in progress.
+## Status: ALL 6 MILESTONES + MOTION RETROFIT COMPLETE. Everything committed locally on `main`. NOT pushed / NOT deployed — blocked on credentials (see Blocked). One manual step from Lizbeth publishes everything.
 
-## Next action
-M6: `/work/` already stubbed (stays unlisted); add `sitemap.xml` + `robots.txt`; analytics (GoatCounter snippet gated on a site-code constant — Lizbeth creates the free account, fills one line; /thanks/?from=book pageview = booking conversion per revision 7); OG/meta audit; full crawl + console sweep; final BUILD_LOG + one-report. If resuming cold: read MOTION.md then PLAN.md; repo `liznmt/website`; `~/Desktop/lizzys-lab` REFERENCE ONLY; serve `python3 -m http.server 8899 --directory site`; ALWAYS `cd /Users/lizzyslab/Desktop/website` first.
+## Next action (this one's yours, Lizbeth — ~10 minutes total)
+1. **Push:** open GitHub Desktop (or `gh auth login` + `git push`) in `~/Desktop/website` and push `main` to `liznmt/website`. Everything is committed and ready.
+2. **Netlify:** app.netlify.com → Add new project → Import from GitHub → `liznmt/website`. It reads `netlify.toml` automatically (publish dir `site`). First deploy goes live on a `*.netlify.app` URL.
+3. **Verify** on the deploy preview: the home-page pin (scroll through "two operating systems"), forms (submit each once — booking, newsletter, waitlist — check Netlify → Forms), and run PageSpeed Insights (target ≥90/90; see Blocked for why this couldn't run locally).
+4. **Domain cutover** (when happy): Netlify → the new project → Domain settings → add `lizzymcwired.com` (remove it from the old `lizzyslab` project first). The old one-pager stays archived in `archive/` and on the old project's netlify.app URL.
+5. **Analytics:** create a free goatcounter.com account, put your site code in `site/assets/js/analytics.js` line 12, push. `/thanks/?from=book` pageviews = booking conversions.
+
+### M6 — hardening + analytics (7/30)
+- `sitemap.xml` (5 public pages; /work/ unlisted, /thanks/ noindexed + robots-disallowed), `robots.txt`.
+- Analytics: GoatCounter (privacy-friendly, cookieless) wired on every page but OFF until the site code is filled in — creating the account is an account-creation action that's Lizbeth's to do. Conversion tracking per revision 7 via the /thanks/?from= paths — zero extra event code.
+- Full sweep: 11 URLs HTTP 200 (incl. zip download, robots, sitemap); crawl 8 html files 0 broken links; console clean on every page; own-weight per page 24–34KB code+css (+83KB fonts cached site-wide, +~35KB GSAP CDN, images lazy) — worst page ≈253KB first load, under the 300KB budget.
+- Lighthouse: still blocked locally (no node, no deployed URL). Perf budget held by construction; run PageSpeed post-deploy.
 
 ### M5 — book + lab (7/30)
 | choice | reasoning | how to reverse |
@@ -97,9 +107,13 @@ Facts grid (NO phone, NO fee — "rates on request"), short+long bio w/ copy but
 
 ## Questions for Lizbeth (batched, never blocking)
 1. Tap one NFC coin and confirm it opens lllaunch.netlify.app/ritual.html (validates the canonical-deploy finding end-to-end).
-2. mypresskit.info account: content is being superseded by /press/ — cancel/delete whenever you want; nothing links to it from the new site.
+2. mypresskit.info account: content is superseded by /press/ — cancel/delete whenever you want; nothing links to it from the new site. (Your phone number and the $300 fee die with it.)
 3. Preferred ESP for the newsletter list when you're ready (capture works meanwhile; export CSV from Netlify Forms).
 4. The old `lizzyslab` Netlify project keeps the one-pager after cutover at its netlify.app URL — keep as archive or delete later; your call, no action needed.
+5. Tech rider: I expanded "RX3 or CDJs" into a full table (xdj-rx3 preferred / 2×cdj-3000 + djm; brings usb ×2 + headphones; needs booth monitor, stable surface, 2 outlets). Confirm or correct on /press/.
+6. Bios on /press/ and all site copy are mine, in your voice — read and edit. The "13.7k views in 30 days" stat from the old site was left out pending your confirmation; say the word and it goes in the facts grid.
+7. Rate card template at `rate-card/lizzy-mcwired-rate-card.html` (never deployed) — fill the $ blanks, print to PDF, send.
+8. GoatCounter account (free, 2 min) for analytics — see Next action #5.
 
 ## Blocked
 - **Push + auto-deploy (all milestones):** this Mac has no git credentials for github.com (osxkeychain empty), no SSH keys, no `gh`, no `node`/`npx`, no `netlify` CLI, and no Chrome (so no logged-in web session to drive). Verified 7/30. Entering credentials is not something an agent should ever do, so: **every milestone is committed locally on `main` with the milestone name; nothing is pushed.** When Lizbeth is back, one action publishes everything: authenticate once (`gh auth login`, or GitHub Desktop, or add the repo in Netlify UI) and `git push`. Netlify GitHub-link steps documented in the final report.
