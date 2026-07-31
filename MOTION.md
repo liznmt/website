@@ -60,6 +60,57 @@ that cell honestly was cut (e.g. no floating particles, no marquee speed-ups, no
 | `/lab/` origin strip (M5, small) | **NEW: `evolution of liz/lizzy-ucla-graduation-cap-gown.jpeg` + `lizzy-congressional-intern-badge.jpeg`** as a two-up "receipts" row | the climb, documentary-style; small static frames — deliberately NO motion on the archival material (it reads as evidence, evidence doesn't dance) |
 | press grid | unchanged (Andrew studio set) | correct as-is; gets tilt-card only |
 
+## HOME RESTRUCTURE PLAN (7/30, awaiting Lizbeth's go — delivered before implementing per her direction)
+
+Target: image-first, cinematic. Full-bleed 100vw sections, type ON the image, one idea per screen,
+longer pins, scroll-scrubbed scale. Photo authority: Lizbeth picks heroes/large-scale subjects;
+I pick supporting/texture. Portrait sources are never cropped into bad landscapes — desktop
+full-bleed for portrait assets = full-height uncropped portrait + canvas-extended atmosphere
+(the red-corset hero treatment, now proven), which reads edge-to-edge without a crop.
+
+### The five screens (from seven blocks today)
+
+| # | screen | image (authority) | motion | one idea |
+|---|---|---|---|---|
+| 1 | **the name** — 100dvh | red-corset portrait (HERS — live already) | scale-scrub 1.15→1.0 on the whole hero canvas + signal-in type + drift | "this is lizzy mcwired" |
+| 2 | **the sound** — 100dvh full-bleed | motion-blur yacht shot `yacht-party-dj-motion-blur-arms-up` as full-height texture, dimmed to 25% under scrim (MINE — texture role; portrait, canvas-extended) — REPLACED by scrubbed BTS video when clips land | scale-scrub 1.12→1.0; eager SoundCloud embed floats over it; track-title h2 | "she sounds like this" |
+| 3 | **the double life pin** — pin extended to +260% (~2.5 viewports held) | day: CHCI graded cool (interim, HERS to replace) · night: yacht-focused (HERS to veto) — both full-height uncropped, type overlaid on the canvas-extension zone, no columns | slower crossfade with a held beat mid-transition; mobile keeps stacked static | "two operating systems, one person" |
+| 4 | **dates + book merged** — 100dvh full-bleed | `yacht-party-friends-group-marina-view.JPG` 2304×1536 TRUE landscape >2000px ✓ (MINE — crowd/context role), scrim 65% | scale-scrub 1.15→1.0; residency row + dates list + book CTA overlaid | "she plays rooms — yours next" |
+| 5 | **the signal list + footer** — compact, no image | transmission only | "stay wired in" |
+
+Cut/merged: separate bookstrip (merges into 4), separate dates section (merges into 4),
+the sound section's column layout (becomes full-bleed), ticker stays as the seam between 1 and 2.
+
+### Scroll-scrubbed scale (her §4)
+`[data-zoom]` pattern: container-clipped img scales 1.15→1.0, scrub 1, transform-only,
+`transform-origin:center 40%`. Reduced-motion/no-JS: image renders at 1.0, nothing hidden.
+Applied to screens 1, 2, 4 full-bleeds. The scale headroom doubles as crop insurance —
+the 15% overscan means canvas-extension edges never show mid-zoom.
+
+### Performance (honest projection — real numbers in BUILD_LOG after build)
+Screen 2 + 4 add two more large JPEGs (~180KB + ~260KB at display size, lazy below fold).
+Projected home first-load stays ≈300KB (hero + code + fonts); full page with all lazy images
+≈750KB before video. Video adds its own weight ON APPROACH only (preload=none + poster,
+fetch begins one viewport early): +8–12MB for the hero-section clip on the wire, never
+blocking first paint. That is the real cost of scrubbed video; reported, not shrunk.
+
+### Video spec (her §5 — exact ask)
+Export from CapCut, H.264 MP4, **no audio track** (or muted — I strip nothing, browsers ignore it),
+1080p, highest quality/bitrate CapCut offers:
+
+| filename | aspect | resolution | duration | content note |
+|---|---|---|---|---|
+| `bts-main-landscape.mp4` | 16:9 | 1920×1080 | 8–14s | THE clip — decks/hands/lights, continuous motion, no jump cuts (scrubbing reverses; cuts read as glitches) |
+| `bts-main-vertical.mp4` | 9:16 | 1080×1920 | 6–10s | same moment recomposed for mobile |
+| `hands-macro.mp4` (optional) | 16:9 | 1920×1080 | 5–8s | close-up hands on jog/faders for screen 2 |
+
+Encoding notes: pick clips with steady, continuous camera/subject motion — scrubbing plays
+them forwards AND backwards. If you can control keyframe interval anywhere, dense keyframes
+(every 0.5s) make scrubbing silky; CapCut default works but may step slightly between
+keyframes in Safari — if it steps, I fall back to play-on-enter (plays forward while the
+section is in view) and log it. Files go in `site/assets/video/` (gitignore exception added);
+≤15MB per file, poster frames I extract on arrival.
+
 ## 4. Retrofit cost per completed milestone
 
 | milestone | retrofit | est. effort | risk |
