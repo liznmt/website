@@ -1,0 +1,11 @@
+{
+  "_edit_me": "add gigs here. date is YYYY-MM-DD. put new shows in 'upcoming'; move them to 'past' after (or leave them — anything with a date before today is shown as past automatically). 'tickets' is optional.",
+  "updated": "2026-07-30",
+  "upcoming": [],
+  "past": [
+    { "date": "2026-07-20", "name": "private yacht party", "venue": "marina del rey", "type": "private event" },
+    { "date": "2026-04-25", "name": "hidden gems — tech house", "venue": "secret location, dtla", "type": "club night" },
+    { "date": "2025-11-02", "name": "ysla25 — day 02", "venue": "los angeles", "type": "showcase" }
+  ],
+  "residency": { "name": "algorythm radio — no boxes", "cadence": "recurring segment", "note": "monthly-ish. recaps land on the mixes page." }
+}

@@ -1,0 +1,20 @@
+{
+  "_edit_me": "the mixes page renders these in order. 'sc' is the soundcloud track URL. first one is the featured mix everywhere.",
+  "mixes": [
+    {
+      "title": "venice beach pop up",
+      "sc": "https://soundcloud.com/lizbeth-marquez-358898478/venice-beach-pop-up",
+      "blurb": "recorded live at the venice beach pop-up. open air, zero ceiling."
+    },
+    {
+      "title": "tech house hidden gems",
+      "sc": "https://soundcloud.com/lizbeth-marquez-358898478/tech-house-hidden-gems",
+      "blurb": "the deep cuts set. tracks that deserve bigger rooms."
+    },
+    {
+      "title": "adhd mashup",
+      "sc": "https://soundcloud.com/lizbeth-marquez-358898478/adhd-mashup",
+      "blurb": "the thesis, mixed. four ideas a minute, all of them landing."
+    }
+  ]
+}

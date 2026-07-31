@@ -1,9 +1,19 @@
 # BUILD_LOG — lizzymcwired.com rebuild
 
-## Status: milestone 1 of 6 COMPLETE (committed locally; push blocked — see Blocked). Milestone 2 (home) next.
+## Status: milestone 2 of 6 COMPLETE (committed locally; push blocked — see Blocked). Milestone 3 (mixes) next.
 
 ## Next action
-Build the real home page in `site/index.html`: hero with stand-in photo (pirate-studios red overhead, optimized via sips into `site/assets/img/`), featured-mix facade, next-dates block reading `site/data/events.json`, book CTA strip, newsletter form (Netlify Forms, name `newsletter`). If resuming cold: PLAN.md is the spec (approved 7/30 + 8 revisions at top); this repo (`liznmt/website`) is the build repo; `~/Desktop/lizzys-lab` is REFERENCE ONLY — never commit its contents here; serve locally with `python3 -m http.server 8899 --directory site`.
+Build `/mixes/`: render `site/data/mixes.json` — first mix as eager embed is ALREADY on home; on /mixes/ ALL embeds are click-to-load facades (poster + play button, revision 5). Add Algorythm residency block (uses `algorythm-onair` slate until the shot exists). If resuming cold: PLAN.md is the spec (approved 7/30 + 8 revisions at top); this repo (`liznmt/website`) is the build repo; `~/Desktop/lizzys-lab` is REFERENCE ONLY; serve with `python3 -m http.server 8899 --directory site`; ALWAYS `cd /Users/lizzyslab/Desktop/website` first (cwd drifts).
+
+### M2 — home (7/30)
+| choice | reasoning | how to reverse |
+|---|---|---|
+| Hero stand-in = pirate-studios red overhead (480/960/1600 srcset, fetchpriority=high, gradient scrim) | Only landscape club-adjacent shot in the library; brand-red; slate #1 comment marks the swap point for `hero-club-wide.jpg` | Swap three files + one srcset |
+| One eager SoundCloud embed on home: "venice beach pop up" | Approved revision 5 verbatim — the sound is the pitch. Player color set to signal red | Facade it like the others |
+| Dates = `site/data/events.json`, JS-rendered; upcoming empty → honest in-voice empty state + 3 greyed past shows; anything dated before today auto-moves to past | Real upcoming events unknown; an empty table reads dead, past shows read as a working artist. She edits ONE json file from her phone | Add an event to `upcoming` |
+| Newsletter form name=`newsletter`, Netlify Forms, honeypot, action=/thanks/ (noindex) | Revision 4 decision (see above): capture-only + no-promise copy | Point action at an ESP later |
+| Home copy: "two operating systems. one person." double-life block, signal-list copy | Written from CLAUDE.md/launch-doc voice rules; **flagged for her edit** | Edit in place |
+**Verify:** 375/768/1440 rendered; maxScrollX=0 at 375; console clean; crawl 8 files 0 broken; dates render verified (empty-state + past rows); form posts to /thanks/ (Netlify capture testable only after deploy); own-weight first load ≈ 215KB (26KB code + 104KB hero-960 + 83KB fonts) + SoundCloud iframe (explicitly approved). Wordmark nowrap fix at 375 found+fixed. Netlify deploy: blocked (see Blocked).
 
 ## Decisions
 

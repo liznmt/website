@@ -57,7 +57,7 @@ p{max-width:62ch}
 .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:var(--sp-4)}
 .wordmark{
   font-family:var(--f-display); font-weight:900; font-size:1rem; text-transform:lowercase;
-  text-decoration:none; letter-spacing:.01em;
+  text-decoration:none; letter-spacing:.01em; white-space:nowrap;
 }
 .wordmark b{color:var(--signal-ink); font-weight:900}
 .nav-links{display:flex; gap:var(--sp-4); list-style:none}
