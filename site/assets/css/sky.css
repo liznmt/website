@@ -1,0 +1,130 @@
+/* lizzy mcwired — the sky
+   one photo (hers), kept at its own 4:3 so everything can be pinned to it in percentages:
+   the moon sits at 50.08% / 35.87%, the towers where sky.js + the markup say they are.
+   layers, bottom → top: photo · city-lights flicker (her live photo) · grade · sky colour · stars · moon · tower lights */
+
+.stage{
+  position:relative; overflow:hidden; background:var(--night);
+  transition:
+    --sky-0 var(--sky-t) ease, --sky-1 var(--sky-t) ease, --sky-2 var(--sky-t) ease, --sky-3 var(--sky-t) ease,
+    --sky-mul var(--sky-t) ease, --grade var(--sky-t) ease, --grade-add var(--sky-t) ease,
+    --sky-o var(--sky-t) ease, --stars-o var(--sky-t) ease, --halo-o var(--sky-t) ease,
+    --veil-o var(--sky-t) ease, --shoot-o var(--sky-t) ease;
+}
+.photo{
+  /* --w / --h: the photo's size on screen. --fx: which x of the photo sits mid-screen. --my: where the moon lands. */
+  --h:calc(var(--w) * .75);
+  position:absolute; width:var(--w); height:var(--h);
+  isolation:isolate;
+}
+.photo > picture, .photo .shot{position:absolute; inset:0; width:100%; height:100%; display:block}
+.photo .shot{object-fit:cover}
+.photo > span, .photo > video, .photo > svg{position:absolute; display:block; pointer-events:none}
+
+/* her live photo, reduced to only what flickers: city lights, added back as light */
+.twinkle{left:0; top:41.997%; width:100%; height:58.003%; object-fit:fill; mix-blend-mode:screen; opacity:0; transition:opacity 1.6s ease}
+.twinkle.on{opacity:.9}
+
+.grade{inset:0; background:var(--grade); mix-blend-mode:multiply}
+.grade-add{inset:0; background:var(--grade-add); mix-blend-mode:screen}
+.sky{
+  inset:0;
+  -webkit-mask:url('../img/sky/sky-mask-1600.webp') center/100% 100% no-repeat;
+          mask:url('../img/sky/sky-mask-1600.webp') center/100% 100% no-repeat;
+}
+.sky-mul{
+  background:var(--sky-mul); mix-blend-mode:multiply;
+  -webkit-mask-image:url('../img/sky/sky-mask-moon-1600.webp'); mask-image:url('../img/sky/sky-mask-moon-1600.webp');
+}
+.sky-add{
+  background:linear-gradient(180deg, var(--sky-0) 6%, var(--sky-1) 29%, var(--sky-2) 47%, var(--sky-3) 61%);
+  mix-blend-mode:screen; opacity:var(--sky-o);
+}
+
+/* stars: drawn by sky.js into this svg, kept out of the buildings by the same mask */
+.stars{inset:0; width:100%; height:100%; opacity:var(--stars-o)}
+.stars circle{fill:#fff}
+.stars .tw{animation:star 4.2s ease-in-out infinite}
+@keyframes star{50%{opacity:.25}}
+.shoot{
+  left:74%; top:17%; width:13%; height:1px; opacity:0;
+  background:linear-gradient(90deg, rgba(255,255,255,.95), rgba(255,255,255,0));
+  transform-origin:left center; animation:shoot 14s linear infinite 5s;
+}
+.shoot-wrap{inset:0; opacity:var(--shoot-o)}
+@keyframes shoot{
+  0%{opacity:0; transform:translate(0,0) rotate(-19deg)}
+  .8%{opacity:.95}
+  6%{opacity:0; transform:translate(calc(var(--w) * -.26), calc(var(--w) * .0895)) rotate(-19deg)}
+  100%{opacity:0; transform:translate(calc(var(--w) * -.26), calc(var(--w) * .0895)) rotate(-19deg)}
+}
+
+/* the moon — her real one. the colour is a glow around it and a tint on it, both breathing. */
+.moon{left:50.08%; top:35.87%; width:0; height:0}
+.moon > span{position:absolute; display:block; border-radius:50%; left:0; top:0; transform:translate(-50%,-50%)}
+.moon-veil{
+  width:calc(var(--w) * .034); height:calc(var(--w) * .034); opacity:var(--veil-o);
+  background:radial-gradient(circle, color-mix(in srgb, var(--sky-1), var(--sky-2) 44%) 0 46%, transparent 72%);
+}
+.moon-halo{
+  width:calc(var(--w) * .46); height:calc(var(--w) * .46); opacity:var(--halo-o);
+  mix-blend-mode:screen; animation:hue 28s ease-in-out infinite;
+}
+.moon-halo i{position:absolute; inset:0; border-radius:50%; display:block}
+.moon-halo i:nth-child(1){
+  background:radial-gradient(circle, rgba(255,70,170,.58) 0%, rgba(255,70,170,.38) 5%, rgba(255,70,170,.23) 11%, rgba(255,70,170,.115) 19%, rgba(255,70,170,.06) 29%, rgba(255,70,170,.025) 40%, rgba(255,70,170,.008) 51%, rgba(255,70,170,0) 62%);
+  animation:breathe 7s ease-in-out infinite;
+}
+.moon-halo i:nth-child(2){ /* a second, cooler light drifting around the first — keeps the glow from reading as one flat disc */
+  inset:20%;
+  background:radial-gradient(circle at 58% 42%, rgba(200,80,255,.34) 0%, rgba(200,80,255,.17) 16%, rgba(200,80,255,.07) 34%, rgba(200,80,255,.02) 50%, rgba(200,80,255,0) 64%);
+  animation:orbit 23s linear infinite;
+}
+.moon-tint{
+  width:calc(var(--w) * .027); height:calc(var(--w) * .027);
+  background:radial-gradient(circle at 44% 42%, #ff9ad2 0%, #ff4fb0 58%, rgba(255,79,176,.7) 72%, rgba(255,79,176,0) 90%);
+  mix-blend-mode:multiply; opacity:calc(var(--tint-pulse) * var(--tint-o));
+  animation:hue 28s ease-in-out infinite, tint 7s ease-in-out infinite;
+}
+/* pink → coral → gold → back through pink → violet → blue. deliberately never passes through green. */
+@keyframes hue{
+  0%{filter:hue-rotate(0deg)} 18%{filter:hue-rotate(55deg)} 30%{filter:hue-rotate(92deg)} 46%{filter:hue-rotate(30deg)}
+  62%{filter:hue-rotate(-40deg)} 80%{filter:hue-rotate(-100deg)} 100%{filter:hue-rotate(0deg)}
+}
+@keyframes breathe{0%,100%{transform:scale(.8); opacity:.62} 50%{transform:scale(1.1); opacity:1}}
+@keyframes orbit{from{transform:rotate(0) translateX(9%)} to{transform:rotate(360deg) translateX(9%)}}
+@keyframes tint{0%,100%{--tint-pulse:.25} 50%{--tint-pulse:.78}}
+
+/* a tower switching on: its own silhouette (clip-path set inline), windows pushed toward gold */
+.tl{opacity:0; transition:opacity .55s ease}
+.tl-dodge{background:linear-gradient(180deg, #9c7431 0%, #70521f 58%, rgba(90,62,18,0) 100%); mix-blend-mode:color-dodge}
+.tl-lift{background:linear-gradient(180deg, rgba(255,205,120,.3) 0%, rgba(255,190,90,.12) 50%, rgba(255,190,90,0) 100%); mix-blend-mode:screen}
+.tl-glow{
+  width:calc(var(--w) * .1); height:calc(var(--w) * .1); border-radius:50%; transform:translate(-50%,-50%);
+  background:radial-gradient(circle, rgba(255,205,120,.34) 0%, rgba(255,190,90,.15) 22%, rgba(255,180,70,.05) 42%, rgba(255,180,70,0) 64%);
+  mix-blend-mode:screen;
+}
+[data-phase="golden"]   .tl[data-phase="golden"],
+[data-phase="sunset"]   .tl[data-phase="sunset"],
+[data-phase="blue"]     .tl[data-phase="blue"],
+[data-phase="midnight"] .tl[data-phase="midnight"],
+[data-phase="dawn"]     .tl[data-phase="dawn"],
+[data-phase="sunrise"]  .tl[data-phase="sunrise"]{opacity:1}
+
+.tl-spire{background:linear-gradient(180deg, rgba(255,226,160,.95), rgba(255,200,110,.6)); mix-blend-mode:screen; box-shadow:0 0 6px rgba(255,200,110,.8)}
+
+/* film grain over everything — hides banding in the dark sky and takes the "render" out of the gradients */
+.grain{
+  position:absolute; inset:0; pointer-events:none; opacity:.16; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='.33 .33 .33 0 0 .33 .33 .33 0 0 .33 .33 .33 0 0 0 0 0 0 1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion:reduce){
+  .moon-halo, .moon-halo i, .moon-tint, .stars .tw, .shoot{animation:none}
+  .moon-tint{--tint-pulse:.5}
+  .shoot{display:none}
+  .stage{transition:none}
+}
+:root[data-mode="low"] .moon-halo, :root[data-mode="low"] .moon-halo i, :root[data-mode="low"] .moon-tint{animation-play-state:paused}
+:root[data-mode="low"] .moon-halo{opacity:calc(var(--halo-o) * .5)}
+:root[data-mode="low"] .shoot, :root[data-mode="low"] .twinkle{display:none}

@@ -1,5 +1,53 @@
 # BUILD_LOG — lizzymcwired.com rebuild
 
+## REDESIGN — "sunset to sunrise" (11/16/2026) — on branch `sunset-to-sunrise`, NOT live until Lizbeth approves the preview
+
+Direction signed off by Lizbeth in chat, 11/16, after three rejected mockups (a copy of someone else's layout; a cartoon moon and flower; her photo used as wallpaper). What she approved: **her own photo of the full moon over downtown LA is the interface.** Each tower is a tab; each tab is an hour of the night; hovering a tower turns the sky to that hour; clicking opens the tab. Spanish line `sin que la inviten` sits with the name at the same weight (her wording). The moon changes color (kept from the mockups — she asked for it twice). No drawn flower, nothing cartoonish, no long scroll-to-reveal.
+
+| tab | hour | spanish | tower in the photo |
+|---|---|---|---|
+| music | 6:40 pm | hora dorada | the wide dark tower, far left |
+| mixes | 7:15 pm | atardecer | US Bank tower (the crown) |
+| dates | 7:50 pm | hora azul | mid tower right of the moon |
+| radio | 12:00 am | medianoche | Wilshire Grand — **the one with the antenna** |
+| the lab | 4:30 am | madrugada | the gold pair |
+| about | 6:10 am | amanecer | the gold slab, right |
+
+**Changed from the approved mockup (my call, easy to reverse):** dates and radio swapped hours so radio lands on the tower with the spire at midnight (late-night radio) and dates gets blue hour ("doors"). Reverse: swap the two rows in the tab table above and in `site/index.html` (pins + tablist), the `<html data-phase>` of the two pages, and the two nav rows.
+
+### How it's built
+| choice | reasoning | how to reverse |
+|---|---|---|
+| One photo at its own 4:3, everything pinned to it in % (`sky.css`) | moon, towers, stars, labels stay registered at every screen size; the photo is positioned by a focal point, not `object-fit` | — |
+| Sky mask traced from the photo (`sky-mask-1600.webp`, + a moon-cut-out variant) | the sky can change color *behind* the real towers; a gradient over the whole photo looked like a filter (that was the "slapped on" mockup) | delete the `.sky` spans |
+| Hours are CSS custom properties registered with `@property`, set by `[data-phase]` (`tokens.css`) | the sky eases between hours instead of cross-fading layers; one source of truth shared by the home sky and each page's band + palette | edit the six `[data-phase]` blocks |
+| Towers "switch on" with their own silhouette (`clip-path` polygons traced from the mask, color-dodge) | the tower you're pointing at is visibly the button; windows go gold instead of a glow blob | remove `.tl` spans |
+| Live Photo → `assets/video/city-twinkle.mp4` (106KB) | her 2-second clip, stabilized to the still, reduced to **only what gets brighter than its own median at light sources**, on black, screen-blended. The still stays sharp; the city lights flicker for real. Loads after page load; skipped for reduced-motion / save-data / low-light | delete the block in `sky.js` |
+| Moon = play button; footer play control too. SoundCloud loads only on press (docked player) | revision 5 asked for one eager embed on `/`; a single-screen home has no room for a visible one, so it's click-to-load like everywhere else. **This reverses revision 5 — flagging it.** iOS needs a tap inside the player, which is why the player is docked and visible, not hidden | — |
+| Phones / narrow windows: tabs become a two-column list in night order; the sky runs sunset→sunrise by itself and each tab lights at its hour | six labels don't fit a phone skyline, and there's no hover on touch | `sky.js` "no hover" block |
+| Each inner page opens on a band of the same sky at its hour, its tower lit and time-tagged; page palette + accent follow the hour | "each tab changes the time of night" | set/remove `data-phase` on `<html>` |
+| GSAP + ScrollTrigger removed; `motion.js` deleted. Pins/scrubs gone. `[data-mt]` now = one 0.6s fade when near the viewport (`site.js`) | her note: doesn't like scrolling hard/long for text to appear. Also −35KB and no third-party script | restore from git |
+| Type: Syne (name, tabs, buttons) · Instrument Serif (headlines + Spanish) · JetBrains Mono (hours, labels) · Space Grotesk kept for body. Unbounded + Space Mono removed | self-hosted latin subsets, all OFL | `tokens.css` |
+| Accent: desert marigold `#f2b544`; voice gold `#f6e2b8`. Signal red / cyan glitch / chrome retired | the gold in her own photo; marigold was her idea | `tokens.css` |
+| `/assets/*` is served immutable, so css/js links carry `?v=sts1` | otherwise returning visitors get old css with new html | bump the string on future css/js edits |
+
+### Pages
+- **new:** `/music/` (Nueva Luna — five moons, one per track, lit from `data/music.json`; ships with no titles and nothing lit because none were given for publication), `/radio/` (no boxes / girlypop radio switch + dial), `/dates/` (the old home dates block + signal list form), `/about/` (bio from the press kit, contained/expansive switch using the two pin photos, the Spanish line).
+- **restyled, content kept:** `/mixes/`, `/lab/` (un-pinned: problem + product side by side), `/book/` (form untouched — same name/fields/action), `/press/`, `/thanks/`, `/work/`, `404`.
+- Netlify forms unchanged in name and fields: `booking`, `newsletter` (now on /dates/ and /music/), `waitlist`.
+- Second photo (the tall one) is used on /book/ and the still pages. New share image `og-skyline.jpg`.
+
+### Verified locally (headless Chrome, 11/16)
+12 pages × desktop 1440 + phone 390: console clean, no failed requests, no horizontal overflow, one h1 each, touch targets ≥44px; 20 internal links resolve. Keyboard: tab order reaches the moon, then the six towers in night order (focus changes the hour), then book. First load: home 250KB desktop / 291KB phone (3× screen takes the 2016px photo), inner pages ≈270KB — under the 300KB budget; twinkle video +106KB after load. **Not verifiable here:** SoundCloud playback (blocked in the build sandbox — the iframe URL is the same shape the site already used), real-device Safari, Lighthouse.
+
+### Copy that needs her eyes (left as it was, or written neutral)
+1. **No Boxes status.** Press kit, `events.json` and both bios still say *resident / recurring segment*. New copy on /radio/, /mixes/, /about/ and the home status line avoids "resident" and "on air" (home says `booking open · la and beyond`). If the residency has wrapped, the press facts, bios and `events.json` residency row need the past tense.
+2. **Lab pilot date** still reads "15-unit pilot — september 2026".
+3. New lines are mine in her voice: the Music lede, the Radio and Dates ledes, "she built her own room", the Girlypop Radio two-liner.
+4. Now unreferenced (left in place): `hero-red-corset-*`, `marina-*`, `sound-blur-*`, `og-red-corset.jpg`, most slates.
+
+---
+
 ## Status: LIVE at https://mcwired.netlify.app — all 6 milestones + motion + home restructure + day-job purge deployed and verified. Domain cutover to lizzymcwired.com is the remaining step (Lizbeth's call).
 
 **7/30 push:** credentials appeared on this Mac (Lizbeth authenticated when she first deployed), so the 3 pending commits (`e5b2d76` hero swap, `0544cf1` plan, `deaeb16` restructure + purge) were pushed per the standing Phase-2 instruction ("Commit… Push. Confirm Netlify deploy is green"). Netlify auto-built; verified live: home hero is the red-corset portrait, the new pin panes/copy are serving, and a sweep of /, /press/, /lab/, /book/, /mixes/ returns **zero** hits for investment firm / legal operations / legal ops / double life / two operating systems / congressional / badge. The employer references that had been publicly live are gone.
