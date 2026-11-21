@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-phase="midnight">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>radio — lizzy mcwired</title>
+<meta name="description" content="no boxes on algorythm radio, and girlypop radio — her own station, coming soon.">
+<meta name="theme-color" content="#0b0f12">
+<link rel="canonical" href="https://lizzymcwired.com/radio/">
+<meta property="og:title" content="radio — lizzy mcwired">
+<meta property="og:description" content="no boxes on algorythm radio, and girlypop radio — her own station, coming soon.">
+<meta property="og:image" content="https://lizzymcwired.com/assets/img/og-skyline.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<script>try{if(localStorage.getItem('lm-mode')==='low')document.documentElement.dataset.mode='low'}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/syne-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/tokens.css?v=sts1">
+<link rel="stylesheet" href="/assets/css/sky.css?v=sts1">
+<link rel="stylesheet" href="/assets/css/base.css?v=sts1">
+<link rel="icon" href="/assets/img/favicon-64.png" type="image/png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<style>
+/* the dial: one needle, two stations */
+  .dial{position:relative; height:3.25rem; margin:var(--sp-4) 0 var(--sp-5); max-width:44rem;
+    background:
+      repeating-linear-gradient(90deg, var(--faint) 0 1px, transparent 1px calc(100% / 48)) left bottom / 100% .5rem no-repeat,
+      repeating-linear-gradient(90deg, var(--dim) 0 1px, transparent 1px calc(100% / 8)) left bottom / 100% 1rem no-repeat;
+    border-bottom:1px solid var(--line)}
+  .dial::after{content:""; position:absolute; right:0; bottom:0; width:1px; height:1rem; background:var(--dim)}
+  .dial i{position:absolute; bottom:-1px; left:25%; width:1px; height:2.6rem; background:var(--accent); box-shadow:0 0 12px var(--accent); transition:left .9s cubic-bezier(.3,1.3,.4,1)}
+  .dial i::before{content:""; position:absolute; top:-3px; left:-3px; width:7px; height:7px; border-radius:50%; background:var(--accent)}
+  .dial span{position:absolute; top:0; transform:translateX(-50%); font-family:var(--f-mono); font-size:.625rem; letter-spacing:.14em; text-transform:uppercase; color:var(--dim); transition:color var(--med) var(--ease)}
+  .dial .f1{left:25%} .dial .f2{left:75%}
+  [data-state="no-boxes"] .dial .f1, [data-state="girlypop"] .dial .f2{color:var(--ink)}
+  [data-state="girlypop"] .dial i{left:75%}
+  .station{max-width:40rem}
+  .station p + p{margin-top:var(--sp-3)}
+  @media (prefers-reduced-motion:reduce){ .dial i{transition:none} }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">skip to content</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="wordmark" href="/" aria-label="lizzy mcwired — home">Lizzy M<span class="lc">c</span>Wired</a>
+    <nav class="menu" id="menu" aria-label="main">
+      <ul class="tabs">
+        <li><a href="/music/"><i class="sw" data-phase="golden"></i>music<small>6:40 pm · hora dorada</small></a></li>
+        <li><a href="/mixes/"><i class="sw" data-phase="sunset"></i>mixes<small>7:15 pm · atardecer</small></a></li>
+        <li><a href="/dates/"><i class="sw" data-phase="blue"></i>dates<small>7:50 pm · hora azul</small></a></li>
+        <li><a href="/radio/" aria-current="page"><i class="sw" data-phase="midnight"></i>radio<small>12:00 am · medianoche</small></a></li>
+        <li><a href="/lab/"><i class="sw" data-phase="dawn"></i>the lab<small>4:30 am · madrugada</small></a></li>
+        <li><a href="/about/"><i class="sw" data-phase="sunrise"></i>about<small>6:10 am · amanecer</small></a></li>
+      </ul>
+      <ul class="menu-extra">
+        <li><a href="/press/">press kit</a></li>
+        <li><a href="https://www.instagram.com/lizzy.mcwired" rel="me noopener" target="_blank">instagram</a></li>
+        <li><a href="https://soundcloud.com/lizbeth-marquez-358898478" rel="me noopener" target="_blank">soundcloud</a></li>
+      </ul>
+    </nav>
+    <a class="nav-book" href="/book/">book</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="menu">menu</button>
+  </div>
+</header>
+
+<main id="main">
+  <div class="band stage" aria-hidden="true">
+    <div class="photo" style="--fx:0.652">
+    <picture><source type="image/avif" srcset="/assets/img/sky/skyline-1024.avif 1024w, /assets/img/sky/skyline-1600.avif 1600w, /assets/img/sky/skyline-2016.avif 2016w" sizes="max(100vw, 62rem)"><source type="image/webp" srcset="/assets/img/sky/skyline-1024.webp 1024w, /assets/img/sky/skyline-1600.webp 1600w, /assets/img/sky/skyline-2016.webp 2016w" sizes="max(100vw, 62rem)"><img class="shot" src="/assets/img/sky/skyline-1600.jpg" srcset="/assets/img/sky/skyline-1024.jpg 1024w, /assets/img/sky/skyline-1600.jpg 1600w, /assets/img/sky/skyline-2016.jpg 2016w" sizes="max(100vw, 62rem)" width="2016" height="1512" alt="" fetchpriority="high" decoding="async"></picture>
+    <span class="grade"></span><span class="grade-add"></span><span class="sky sky-mul"></span><span class="sky sky-add"></span>
+    <svg class="stars sky" viewBox="0 0 2016 1512" preserveAspectRatio="none" aria-hidden="true"></svg>
+    <span class="moon"><span class="moon-veil"></span><span class="moon-halo"><i></i><i></i></span><span class="moon-tint"></span></span>
+    <span class="tl tl-glow" data-phase="midnight" style="left:65.23%;top:46.83%"></span>
+    <span class="tl tl-dodge" data-phase="midnight" style="left:64.43%;top:46.83%;width:2.19%;height:13.77%;clip-path:polygon(43.2% 0.0%,36.4% 1.0%,40.9% 6.2%,31.8% 9.6%,31.8% 13.0%,25.0% 14.9%,11.4% 15.4%,2.3% 18.3%,0.0% 95.2%,4.5% 99.5%,97.7% 99.5%,97.7% 18.8%,93.2% 16.3%,70.5% 14.4%,61.4% 1.4%)"></span>
+    <span class="tl tl-lift" data-phase="midnight" style="left:64.43%;top:46.83%;width:2.19%;height:13.77%;clip-path:polygon(43.2% 0.0%,36.4% 1.0%,40.9% 6.2%,31.8% 9.6%,31.8% 13.0%,25.0% 14.9%,11.4% 15.4%,2.3% 18.3%,0.0% 95.2%,4.5% 99.5%,97.7% 99.5%,97.7% 18.8%,93.2% 16.3%,70.5% 14.4%,61.4% 1.4%)"></span>
+    <span class="tl tl-spire" data-phase="midnight" style="left:65.15%;top:42.6%;width:.16%;height:4.3%"></span>
+    <span class="here" style="left:65.23%;top:42.6%">12:00 am</span>
+    </div>
+    <span class="grain"></span>
+  </div>
+  <section class="container page-head">
+    <span class="eyebrow">12:00 am · <span lang="es">medianoche</span></span>
+    <h1>radio</h1>
+    <p class="lede">late-night signal. two stations on one dial.</p>
+  </section>
+
+  <section class="section tight">
+    <div class="container" data-slash-scope data-state="no-boxes">
+      <div class="slash" data-slash role="group" aria-label="station" data-mt>
+        <button type="button" data-show="no-boxes" aria-pressed="true">no boxes</button><span aria-hidden="true">/</span><button type="button" data-show="girlypop" aria-pressed="false">girlypop radio</button>
+      </div>
+      <div class="dial" aria-hidden="true" data-mt><span class="f1">algorythm radio</span><span class="f2">her own signal</span><i></i></div>
+
+      <div class="station stack" id="no-boxes" data-mt>
+        <span class="eyebrow">on algorythm radio</span>
+        <p class="lede" style="color:var(--ink)">a segment about exactly what it sounds like: no genre boxes, no format, selections that follow the brain instead of the algorithm.</p>
+        <p class="dim">sets from the segment sit with the rest of the mixes.</p>
+        <p><a class="link" href="/mixes/">the mixes →</a></p>
+      </div>
+
+      <div class="station stack" id="girlypop" hidden>
+        <span class="eyebrow">coming soon</span>
+        <p class="lede" style="color:var(--ink)">her own station. sets, series and sessions, all on one signal.</p>
+        <p class="dim">it isn't on air yet. the signal list hears first.</p>
+        <p><a class="link" href="/dates/#signal">get on the signal list →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section closer">
+    <div class="container">
+      <p class="lede">want her on your station, stage or stream?</p>
+      <p><a class="btn" href="/book/">book a set</a></p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <p class="footer-sign" lang="es">sin que la inviten</p>
+    <ul class="footer-social">
+      <li><a href="/press/">press kit</a></li>
+      <li><a href="https://www.instagram.com/lizzy.mcwired" rel="me noopener" target="_blank">instagram</a></li>
+      <li><a href="https://soundcloud.com/lizbeth-marquez-358898478" rel="me noopener" target="_blank">soundcloud</a></li>
+      <li><a href="https://www.tiktok.com/@lizzy.mcwired" rel="me noopener" target="_blank">tiktok</a></li>
+      <li><a href="https://youtube.com/@lizzy-mc-wired" rel="me noopener" target="_blank">youtube</a></li>
+    </ul>
+    <button class="mode-toggle" aria-pressed="false">☾ low-light: off</button>
+    <p class="footer-legal">© lizzy mcwired llc · los angeles · <a href="mailto:bookings@lizzymcwired.com">bookings@lizzymcwired.com</a></p>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js?v=sts1" defer></script>
+<script src="/assets/js/sky.js?v=sts1" defer></script>
+<script src="/assets/js/analytics.js?v=sts1" defer></script>
+</body>
+</html>

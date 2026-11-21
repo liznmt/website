@@ -4,19 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>received — lizzy mcwired</title>
-<meta name="description" content="form received.">
-<meta name="theme-color" content="#0a0a0c">
+<meta name="description" content="message received.">
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#0b0f12">
 <link rel="canonical" href="https://lizzymcwired.com/thanks/">
 <meta property="og:title" content="received — lizzy mcwired">
-<meta property="og:description" content="form received.">
-<meta property="og:image" content="https://lizzymcwired.com/assets/img/logo-512.png">
+<meta property="og:description" content="message received.">
+<meta property="og:image" content="https://lizzymcwired.com/assets/img/og-skyline.jpg">
 <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <script>try{if(localStorage.getItem('lm-mode')==='low')document.documentElement.dataset.mode='low'}catch(e){}</script>
-<link rel="preload" href="/assets/fonts/unbounded-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/tokens.css">
-<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="preload" href="/assets/fonts/syne-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/tokens.css?v=sts1">
+<link rel="stylesheet" href="/assets/css/sky.css?v=sts1">
+<link rel="stylesheet" href="/assets/css/base.css?v=sts1">
 <link rel="icon" href="/assets/img/favicon-64.png" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 </head>
@@ -24,34 +26,43 @@
 <a class="skip" href="#main">skip to content</a>
 
 <header class="nav">
-  <div class="container nav-inner">
-    <a class="wordmark" href="/">lizzy <b>mcwired</b></a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">menu</button>
-    <nav aria-label="main">
-      <ul class="nav-links" id="nav-links">
-        <li><a href="/mixes/">mixes</a></li>
-        <li><a href="/press/">press</a></li>
-        <li><a href="/lab/">the lab</a></li>
+  <div class="nav-inner">
+    <a class="wordmark" href="/" aria-label="lizzy mcwired — home">Lizzy M<span class="lc">c</span>Wired</a>
+    <nav class="menu" id="menu" aria-label="main">
+      <ul class="tabs">
+        <li><a href="/music/"><i class="sw" data-phase="golden"></i>music<small>6:40 pm · hora dorada</small></a></li>
+        <li><a href="/mixes/"><i class="sw" data-phase="sunset"></i>mixes<small>7:15 pm · atardecer</small></a></li>
+        <li><a href="/dates/"><i class="sw" data-phase="blue"></i>dates<small>7:50 pm · hora azul</small></a></li>
+        <li><a href="/radio/"><i class="sw" data-phase="midnight"></i>radio<small>12:00 am · medianoche</small></a></li>
+        <li><a href="/lab/"><i class="sw" data-phase="dawn"></i>the lab<small>4:30 am · madrugada</small></a></li>
+        <li><a href="/about/"><i class="sw" data-phase="sunrise"></i>about<small>6:10 am · amanecer</small></a></li>
+      </ul>
+      <ul class="menu-extra">
+        <li><a href="/press/">press kit</a></li>
+        <li><a href="https://www.instagram.com/lizzy.mcwired" rel="me noopener" target="_blank">instagram</a></li>
+        <li><a href="https://soundcloud.com/lizbeth-marquez-358898478" rel="me noopener" target="_blank">soundcloud</a></li>
       </ul>
     </nav>
     <a class="nav-book" href="/book/">book</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="menu">menu</button>
   </div>
 </header>
 
-<main id="main">
-  <section class="section" style="padding-top:calc(var(--nav-h) + var(--sp-6))">
-    <div class="container">
-      <span class="eyebrow">signal received</span>
-      <h1 style="font-size:var(--t-3xl)" data-tt>received.</h1>
-      <p class="lede" style="margin-top:var(--sp-4)">logged and read by a human — usually within 48 hours. no auto-replies, no drip.</p>
-      <p style="margin-top:var(--sp-4)"><a class="btn btn-ghost" href="/">back to the front</a></p>
-    </div>
-  </section>
+<main id="main" class="still">
+  <div class="still-bg" aria-hidden="true"><picture><source type="image/avif" srcset="/assets/img/sky/skyline-tall-760.avif 760w, /assets/img/sky/skyline-tall-1512.avif 1512w" sizes="100vw"><source type="image/webp" srcset="/assets/img/sky/skyline-tall-760.webp 760w, /assets/img/sky/skyline-tall-1512.webp 1512w" sizes="100vw"><img class="" src="/assets/img/sky/skyline-tall-1512.jpg" srcset="/assets/img/sky/skyline-tall-760.jpg 760w, /assets/img/sky/skyline-tall-1512.jpg 1512w" sizes="100vw" width="1512" height="2016" alt="" fetchpriority="high" decoding="async"></picture></div>
+  <div class="container still-copy">
+    <span class="eyebrow">signal received</span>
+    <h1>received.</h1>
+    <p class="lede">logged and read by a human — usually within 48 hours. no auto-replies, no drip.</p>
+    <a class="btn btn-ghost" href="/">back to the skyline</a>
+  </div>
 </main>
 
 <footer class="footer">
   <div class="container footer-inner">
+    <p class="footer-sign" lang="es">sin que la inviten</p>
     <ul class="footer-social">
+      <li><a href="/press/">press kit</a></li>
       <li><a href="https://www.instagram.com/lizzy.mcwired" rel="me noopener" target="_blank">instagram</a></li>
       <li><a href="https://soundcloud.com/lizbeth-marquez-358898478" rel="me noopener" target="_blank">soundcloud</a></li>
       <li><a href="https://www.tiktok.com/@lizzy.mcwired" rel="me noopener" target="_blank">tiktok</a></li>
@@ -62,10 +73,8 @@
   </div>
 </footer>
 
-<script src="/assets/js/site.js" defer></script>
-<script src="/assets/js/analytics.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-<script src="/assets/js/motion.js" defer></script>
+<script src="/assets/js/site.js?v=sts1" defer></script>
+<script src="/assets/js/sky.js?v=sts1" defer></script>
+<script src="/assets/js/analytics.js?v=sts1" defer></script>
 </body>
 </html>

@@ -4,49 +4,34 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>press kit — lizzy mcwired</title>
-<meta name="description" content="press kit for lizzy mcwired: bio, photos, logos, tech rider, past performances, booking contact. everything a promoter needs, downloadable.">
-<meta name="theme-color" content="#0a0a0c">
+<meta name="description" content="press kit for lizzy mcwired: bio, photos, tech rider, selected performances. everything a promoter needs, no login.">
+<meta name="theme-color" content="#0b0f12">
 <link rel="canonical" href="https://lizzymcwired.com/press/">
 <meta property="og:title" content="press kit — lizzy mcwired">
-<meta property="og:description" content="bio, photos, tech rider — everything a promoter needs, downloadable.">
-<meta property="og:image" content="https://lizzymcwired.com/assets/img/press/headshot-white-bg-800.jpg">
-<meta property="og:type" content="profile">
+<meta property="og:description" content="press kit for lizzy mcwired: bio, photos, tech rider, selected performances. everything a promoter needs, no login.">
+<meta property="og:image" content="https://lizzymcwired.com/assets/img/og-skyline.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <script>try{if(localStorage.getItem('lm-mode')==='low')document.documentElement.dataset.mode='low'}catch(e){}</script>
-<link rel="preload" href="/assets/fonts/unbounded-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/tokens.css">
-<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="preload" href="/assets/fonts/syne-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/instrument-serif-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/tokens.css?v=sts1">
+<link rel="stylesheet" href="/assets/css/sky.css?v=sts1">
+<link rel="stylesheet" href="/assets/css/base.css?v=sts1">
 <link rel="icon" href="/assets/img/favicon-64.png" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Lizzy McWired",
-  "jobTitle": "DJ",
-  "homeLocation": { "@type": "Place", "name": "Los Angeles, CA" },
-  "email": "mailto:bookings@lizzymcwired.com",
-  "url": "https://lizzymcwired.com",
-  "genre": ["House", "Tech House", "Minimal / Deep Tech"],
-  "sameAs": [
-    "https://www.instagram.com/lizzy.mcwired",
-    "https://soundcloud.com/lizbeth-marquez-358898478",
-    "https://www.tiktok.com/@lizzy.mcwired",
-    "https://youtube.com/@lizzy-mc-wired"
-  ]
-}
-</script>
 <style>
-  .facts{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:var(--sp-3); margin-top:var(--sp-4)}
+.facts{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:var(--sp-3)}
   .fact{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-m); padding:var(--sp-3)}
-  .fact dt{font-family:var(--f-mono); font-size:var(--t-xs); letter-spacing:.2em; text-transform:uppercase; color:var(--dim); margin-bottom:.35rem}
+  .fact dt{font-family:var(--f-mono); font-size:var(--t-xs); letter-spacing:.14em; text-transform:uppercase; color:var(--dim); margin-bottom:.35rem}
   .fact dd{margin:0; font-weight:500}
-  .bio-block{position:relative; background:var(--surface); border:1px solid var(--line); border-radius:var(--r-m); padding:var(--sp-4); margin-top:var(--sp-4)}
-  .bio-block h3{margin-bottom:var(--sp-3)}
+  .bio-block{position:relative; background:var(--surface); border:1px solid var(--line); border-radius:var(--r-m); padding:var(--sp-4); margin-top:var(--sp-3)}
+  .bio-block h3{margin-bottom:var(--sp-3); color:var(--accent)}
   .copy-btn{
-    position:absolute; top:var(--sp-3); right:var(--sp-3);
-    font-family:var(--f-mono); font-size:var(--t-xs); letter-spacing:.14em; text-transform:uppercase;
-    color:var(--dim); border:1px solid var(--line); border-radius:999px; padding:.35rem .8rem;
+    position:absolute; top:var(--sp-3); right:var(--sp-3); min-height:44px;
+    font-family:var(--f-mono); font-size:var(--t-xs); letter-spacing:.12em; text-transform:uppercase;
+    color:var(--dim); border:1px solid var(--line); border-radius:999px; padding:0 .9rem;
   }
   .copy-btn:hover{color:var(--ink); border-color:var(--ink)}
   .photo-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:var(--sp-4); margin-top:var(--sp-4)}
@@ -54,52 +39,68 @@
   .photo-card .frame{aspect-ratio:2/3}
   .photo-card .frame.landscape{aspect-ratio:3/2}
   .photo-card figcaption{display:flex; justify-content:space-between; gap:var(--sp-2); align-items:baseline; margin-top:.5rem}
-  .photo-card .credit{font-family:var(--f-mono); font-size:var(--t-xs); color:var(--faint)}
-  .photo-card a.dl{font-family:var(--f-mono); font-size:var(--t-xs); letter-spacing:.1em; color:var(--signal-ink); text-decoration:none; white-space:nowrap}
+  .photo-card .credit{font-family:var(--f-mono); font-size:.625rem; letter-spacing:.04em; color:var(--dim)}
+  .photo-card a.dl{font-family:var(--f-mono); font-size:var(--t-xs); letter-spacing:.08em; color:var(--accent); text-decoration:none; white-space:nowrap}
   .photo-card a.dl:hover{text-decoration:underline}
-  .rider{width:100%; border-collapse:collapse; margin-top:var(--sp-4)}
-  .rider th,.rider td{text-align:left; padding:var(--sp-3); border-bottom:1px solid var(--line); vertical-align:top}
-  .rider th{font-family:var(--f-mono); font-size:var(--t-xs); letter-spacing:.2em; text-transform:uppercase; color:var(--dim); width:11rem}
-  .past li{padding:var(--sp-2) 0; border-bottom:1px solid var(--line); list-style:none}
-  .past .mono{color:var(--signal-ink); margin-right:var(--sp-3)}
+  .rider{width:100%; border-collapse:collapse; margin-top:var(--sp-3)}
+  .rider th,.rider td{text-align:left; padding:var(--sp-3) var(--sp-3) var(--sp-3) 0; border-bottom:1px solid var(--line); vertical-align:top}
+  .rider th{font-family:var(--f-mono); font-weight:400; font-size:var(--t-xs); letter-spacing:.14em; text-transform:uppercase; color:var(--dim); width:11rem}
+  .past li{padding:var(--sp-3) 0; border-bottom:1px solid var(--line); list-style:none}
+  .past .mono{color:var(--accent); margin-right:var(--sp-3)}
   .dl-strip{display:flex; gap:var(--sp-3); flex-wrap:wrap; margin-top:var(--sp-4)}
+  @media (max-width:560px){ .rider th{width:7.5rem} }
 </style>
 </head>
 <body>
 <a class="skip" href="#main">skip to content</a>
 
 <header class="nav">
-  <div class="container nav-inner">
-    <a class="wordmark" href="/">lizzy <b>mcwired</b></a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">menu</button>
-    <nav aria-label="main">
-      <ul class="nav-links" id="nav-links">
-        <li><a href="/mixes/">mixes</a></li>
-        <li><a href="/press/" aria-current="page">press</a></li>
-        <li><a href="/lab/">the lab</a></li>
+  <div class="nav-inner">
+    <a class="wordmark" href="/" aria-label="lizzy mcwired — home">Lizzy M<span class="lc">c</span>Wired</a>
+    <nav class="menu" id="menu" aria-label="main">
+      <ul class="tabs">
+        <li><a href="/music/"><i class="sw" data-phase="golden"></i>music<small>6:40 pm · hora dorada</small></a></li>
+        <li><a href="/mixes/"><i class="sw" data-phase="sunset"></i>mixes<small>7:15 pm · atardecer</small></a></li>
+        <li><a href="/dates/"><i class="sw" data-phase="blue"></i>dates<small>7:50 pm · hora azul</small></a></li>
+        <li><a href="/radio/"><i class="sw" data-phase="midnight"></i>radio<small>12:00 am · medianoche</small></a></li>
+        <li><a href="/lab/"><i class="sw" data-phase="dawn"></i>the lab<small>4:30 am · madrugada</small></a></li>
+        <li><a href="/about/"><i class="sw" data-phase="sunrise"></i>about<small>6:10 am · amanecer</small></a></li>
+      </ul>
+      <ul class="menu-extra">
+        <li><a href="/press/">press kit</a></li>
+        <li><a href="https://www.instagram.com/lizzy.mcwired" rel="me noopener" target="_blank">instagram</a></li>
+        <li><a href="https://soundcloud.com/lizbeth-marquez-358898478" rel="me noopener" target="_blank">soundcloud</a></li>
       </ul>
     </nav>
     <a class="nav-book" href="/book/">book</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="menu">menu</button>
   </div>
 </header>
 
 <main id="main">
-  <section class="section" style="padding-top:calc(var(--nav-h) + var(--sp-6))">
-    <div class="container">
-      <span class="eyebrow">for promoters, press & partners</span>
-      <h1 style="font-size:var(--t-3xl)" data-tt>press kit</h1>
-      <p class="lede" style="margin-top:var(--sp-3)">everything you need, no login, no pdf viewer, no waiting on an email. grab it.</p>
-      <div class="dl-strip">
-        <a class="btn" href="/press/downloads/lizzy-mcwired-press-photos.zip" download>download it all (9mb zip)</a>
-        <a class="btn btn-ghost" href="mailto:bookings@lizzymcwired.com">bookings@lizzymcwired.com</a>
-      </div>
+  <div class="band stage" aria-hidden="true">
+    <div class="photo" style="--fx:0.500">
+    <picture><source type="image/avif" srcset="/assets/img/sky/skyline-1024.avif 1024w, /assets/img/sky/skyline-1600.avif 1600w, /assets/img/sky/skyline-2016.avif 2016w" sizes="max(100vw, 62rem)"><source type="image/webp" srcset="/assets/img/sky/skyline-1024.webp 1024w, /assets/img/sky/skyline-1600.webp 1600w, /assets/img/sky/skyline-2016.webp 2016w" sizes="max(100vw, 62rem)"><img class="shot" src="/assets/img/sky/skyline-1600.jpg" srcset="/assets/img/sky/skyline-1024.jpg 1024w, /assets/img/sky/skyline-1600.jpg 1600w, /assets/img/sky/skyline-2016.jpg 2016w" sizes="max(100vw, 62rem)" width="2016" height="1512" alt="" fetchpriority="high" decoding="async"></picture>
+    <span class="grade"></span><span class="grade-add"></span><span class="sky sky-mul"></span><span class="sky sky-add"></span>
+    <svg class="stars sky" viewBox="0 0 2016 1512" preserveAspectRatio="none" aria-hidden="true"></svg>
+    <span class="moon"><span class="moon-veil"></span><span class="moon-halo"><i></i><i></i></span><span class="moon-tint"></span></span>
+    </div>
+    <span class="grain"></span>
+  </div>
+  <section class="container page-head">
+    <span class="eyebrow">for promoters, press &amp; partners</span>
+    <h1>press kit</h1>
+    <p class="lede">everything you need, no login, no pdf viewer, no waiting on an email. grab it.</p>
+    <div class="dl-strip">
+      <a class="btn" href="/press/downloads/lizzy-mcwired-press-photos.zip" download>download it all (9mb zip)</a>
+      <a class="btn btn-ghost" href="mailto:bookings@lizzymcwired.com">bookings@lizzymcwired.com</a>
     </div>
   </section>
 
-  <section class="section" style="padding-top:0">
+  <section class="section tight">
     <div class="container">
       <span class="eyebrow">the facts</span>
-      <dl class="facts" data-mt-group data-mt>
+      <dl class="facts" data-mt>
         <div class="fact"><dt>artist</dt><dd>lizzy mcwired (lizbeth marquez)</dd></div>
         <div class="fact"><dt>base</dt><dd>los angeles, ca — travels</dd></div>
         <div class="fact"><dt>genres</dt><dd>house · tech house · minimal / deep tech</dd></div>
@@ -110,7 +111,7 @@
     </div>
   </section>
 
-  <section class="section" style="padding-top:0">
+  <section class="section tight">
     <div class="container">
       <span class="eyebrow">bio</span>
       <div class="bio-block">
@@ -130,48 +131,48 @@
     </div>
   </section>
 
-  <section class="section" style="padding-top:0">
+  <section class="section tight">
     <div class="container">
       <span class="eyebrow">press photos — download the size you need</span>
-      <h2 data-tt>photos</h2>
+      <h2>photos</h2>
       <div class="photo-grid">
-        <div class="photo-card" data-tilt><figure>
+        <div class="photo-card"><figure>
           <div class="frame"><img loading="lazy" src="/assets/img/press/headshot-white-bg-800.jpg" alt="lizzy mcwired — beauty headshot, blue satin top, floral earrings, white backdrop"></div>
           <figcaption><span class="credit">© andrew leon-bercovich</span><a class="dl" href="/press/downloads/headshot-white-bg-3000.jpg" download>3000px ↓</a></figcaption>
         </figure></div>
-        <div class="photo-card" data-tilt><figure>
+        <div class="photo-card"><figure>
           <div class="frame"><img loading="lazy" src="/assets/img/press/wood-panel-suit-headphones-800.jpg" alt="lizzy mcwired seated in white satin blouse and pinstripe trousers, holding headphones, wood-paneled backdrop"></div>
           <figcaption><span class="credit">© andrew leon-bercovich</span><a class="dl" href="/press/downloads/wood-panel-suit-headphones-3000.jpg" download>3000px ↓</a></figcaption>
         </figure></div>
-        <div class="photo-card" data-tilt><figure>
+        <div class="photo-card"><figure>
           <div class="frame"><img loading="lazy" src="/assets/img/press/black-leather-spotlight-800.jpg" alt="lizzy mcwired in black leather dress and coat under a spotlight on dark background"></div>
           <figcaption><span class="credit">© andrew leon-bercovich</span><a class="dl" href="/press/downloads/black-leather-spotlight-3000.jpg" download>3000px ↓</a></figcaption>
         </figure></div>
-        <div class="photo-card" data-tilt><figure>
+        <div class="photo-card"><figure>
           <div class="frame"><img loading="lazy" src="/assets/img/press/red-backdrop-denim-corset-800.jpg" alt="lizzy mcwired in denim corset dress and cat-eye sunglasses against a red backdrop"></div>
           <figcaption><span class="credit">© andrew leon-bercovich</span><a class="dl" href="/press/downloads/red-backdrop-denim-corset-3000.jpg" download>3000px ↓</a></figcaption>
         </figure></div>
-        <div class="photo-card" data-tilt><figure>
+        <div class="photo-card"><figure>
           <div class="frame"><img loading="lazy" src="/assets/img/press/white-bg-red-top-walking-800.jpg" alt="lizzy mcwired walking with folding chair prop, red top and sunglasses, white backdrop"></div>
           <figcaption><span class="credit">© andrew leon-bercovich</span><a class="dl" href="/press/downloads/white-bg-red-top-walking-3000.jpg" download>3000px ↓</a></figcaption>
         </figure></div>
-        <div class="photo-card" data-tilt><figure>
+        <div class="photo-card"><figure>
           <div class="frame"><img loading="lazy" src="/assets/img/press/white-bg-crochet-floor-pose-800.jpg" alt="lizzy mcwired lying on the floor in a colorful crochet sweater and neon green boots, white backdrop"></div>
           <figcaption><span class="credit">© andrew leon-bercovich</span><a class="dl" href="/press/downloads/white-bg-crochet-floor-pose-3000.jpg" download>3000px ↓</a></figcaption>
         </figure></div>
-        <div class="photo-card" data-tilt><figure>
+        <div class="photo-card"><figure>
           <div class="frame"><img loading="lazy" src="/assets/img/press/white-bg-red-top-top-down-800.jpg" alt="lizzy mcwired from a top-down angle, red top and dark jeans, white backdrop"></div>
           <figcaption><span class="credit">© andrew leon-bercovich</span><a class="dl" href="/press/downloads/white-bg-red-top-top-down-3000.jpg" download>3000px ↓</a></figcaption>
         </figure></div>
-        <div class="photo-card" data-tilt><figure>
+        <div class="photo-card"><figure>
           <div class="frame"><img loading="lazy" src="/assets/img/press/ysla25-dj-set-disco-ball-your-shot-credit-800.jpg" alt="lizzy mcwired djing live at ysla25 under a disco ball and red neon, faux fur vest"></div>
           <figcaption><span class="credit">© your shot (live, ysla25)</span><a class="dl" href="/press/downloads/ysla25-dj-set-disco-ball-your-shot-credit-3000.jpg" download>3000px ↓</a></figcaption>
         </figure></div>
-        <div class="photo-card" data-tilt><figure>
+        <div class="photo-card"><figure>
           <div class="frame landscape" style="background:#fff"><img loading="lazy" src="/assets/img/press/pinstripe-blazer-headphones-cutout-800.jpg" alt="cutout of lizzy mcwired in pinstripe blazer with studded bag and headphones, white background" style="object-fit:contain"></div>
           <figcaption><span class="credit">© andrew leon-bercovich (cutout)</span><a class="dl" href="/press/downloads/pinstripe-blazer-headphones-cutout-3000.jpg" download>3000px ↓</a></figcaption>
         </figure></div>
-        <div class="photo-card" data-tilt><figure>
+        <div class="photo-card"><figure>
           <div class="frame" style="aspect-ratio:1/1"><img loading="lazy" src="/assets/img/logo-512.png" alt="lizzy mcwired brand logo — black clover on chrome circle with red glitch wordmark"></div>
           <figcaption><span class="credit">brand mark, 2000px png</span><a class="dl" href="/press/downloads/logo-chrome-clover-2000.png" download>2000px ↓</a></figcaption>
         </figure></div>
@@ -180,10 +181,10 @@
     </div>
   </section>
 
-  <section class="section" style="padding-top:0">
+  <section class="section tight">
     <div class="container">
       <span class="eyebrow">tech rider</span>
-      <h2 data-tt>rider</h2>
+      <h2>rider</h2>
       <table class="rider">
         <tr><th scope="row">decks</th><td>pioneer xdj-rx3 (preferred) <em class="dim">or</em> 2× cdj-3000 + djm-series mixer</td></tr>
         <tr><th scope="row">she brings</th><td>usb ×2 (rekordbox), headphones</td></tr>
@@ -193,11 +194,11 @@
     </div>
   </section>
 
-  <section class="section" style="padding-top:0">
+  <section class="section tight">
     <div class="container">
       <span class="eyebrow">receipts</span>
-      <h2 data-tt>selected performances</h2>
-      <ul class="past" style="margin-top:var(--sp-4); padding:0">
+      <h2>selected performances</h2>
+      <ul class="past" style="padding:0">
         <li><span class="mono">recurring</span> algorythm radio — "no boxes" resident segment</li>
         <li><span class="mono">jul 2026</span> private yacht party — marina del rey (full-night solo set)</li>
         <li><span class="mono">apr 2026</span> hidden gems, tech house night — secret location, dtla</li>
@@ -206,17 +207,19 @@
     </div>
   </section>
 
-  <section class="section" style="text-align:center; border-block:1px solid var(--line); background:var(--surface)">
+  <section class="section closer">
     <div class="container">
       <p class="lede">dates, rates, holds:</p>
-      <p style="margin-top:var(--sp-4)"><a class="btn" href="/book/">request availability</a></p>
+      <p><a class="btn" href="/book/">request availability</a></p>
     </div>
   </section>
 </main>
 
 <footer class="footer">
   <div class="container footer-inner">
+    <p class="footer-sign" lang="es">sin que la inviten</p>
     <ul class="footer-social">
+      <li><a href="/press/">press kit</a></li>
       <li><a href="https://www.instagram.com/lizzy.mcwired" rel="me noopener" target="_blank">instagram</a></li>
       <li><a href="https://soundcloud.com/lizbeth-marquez-358898478" rel="me noopener" target="_blank">soundcloud</a></li>
       <li><a href="https://www.tiktok.com/@lizzy.mcwired" rel="me noopener" target="_blank">tiktok</a></li>
@@ -227,8 +230,9 @@
   </div>
 </footer>
 
-<script src="/assets/js/site.js" defer></script>
-<script src="/assets/js/analytics.js" defer></script>
+<script src="/assets/js/site.js?v=sts1" defer></script>
+<script src="/assets/js/sky.js?v=sts1" defer></script>
+<script src="/assets/js/analytics.js?v=sts1" defer></script>
 <script>
 /* copy-to-clipboard for bios */
 document.addEventListener('click', function (e) {
@@ -248,8 +252,5 @@ document.addEventListener('click', function (e) {
   else { legacy(); }
 });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-<script src="/assets/js/motion.js" defer></script>
 </body>
 </html>

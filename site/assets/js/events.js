@@ -35,7 +35,7 @@
           '<span class="mono date-when">recurring</span>' +
           '<span class="date-name">' + data.residency.name + '<small>' + data.residency.cadence +
           (data.residency.note ? ' · ' + data.residency.note : '') + '</small></span>' +
-          '<a class="mono date-tix" style="text-decoration:none;color:var(--signal-ink)" href="/mixes/">recaps →</a>';
+          '<a class="link date-tix" href="/radio/">radio →</a>';
         box.appendChild(res);
       }
       if (upcoming.length) {
@@ -49,7 +49,7 @@
       if (past.length) {
         var label = document.createElement('p');
         label.className = 'mono dim past-label';
-        label.textContent = '// recently';
+        label.textContent = 'recently';
         box.appendChild(label);
         past.forEach(function (e) { box.appendChild(row(e, true)); });
       }

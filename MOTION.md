@@ -1,3 +1,5 @@
+> **Superseded 11/16/2026.** The "sunset to sunrise" redesign removed GSAP, the pins and every scroll-scrubbed pattern below (Lizbeth: no scrolling hard or long for text to appear). What's left: one quick fade as content nears the screen (`site.js`), the sky easing between hours, the moon's color, and her Live Photo's city-light flicker (`sky.js`, `sky.css`). Reduced-motion and low-light still get a complete static site. See BUILD_LOG.md, top entry. This file is kept as history.
+
 # MOTION.md — motion system re-plan (HALT-level change, 7/30)
 
 Response to the mid-build direction change: motion becomes foundation-level.

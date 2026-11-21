@@ -1,78 +1,140 @@
 /* lizzy mcwired — design tokens
-   direction: "chrome and signal" — near-black, ink, signal red, rare cyan glitch,
-   chrome metallic for borders/dividers. see PLAN.md §3. */
+   direction: "sunset to sunrise" — her own photo of the moon over downtown LA is the site.
+   the six tabs are six times of night; each page wears its hour. see BUILD_LOG.md (11/16/2026). */
 
 @font-face{
-  font-family:'Unbounded';
-  src:url('../fonts/unbounded-var.woff2') format('woff2');
-  font-weight:200 900; font-display:swap;
+  font-family:'Syne';
+  src:url('../fonts/syne-var.woff2') format('woff2');
+  font-weight:400 800; font-display:swap;
+}
+@font-face{
+  font-family:'Instrument Serif';
+  src:url('../fonts/instrument-serif-italic.woff2') format('woff2');
+  font-weight:400; font-style:italic; font-display:swap;
+}
+@font-face{
+  font-family:'Instrument Serif';
+  src:url('../fonts/instrument-serif-regular.woff2') format('woff2');
+  font-weight:400; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'JetBrains Mono';
+  src:url('../fonts/jetbrains-mono-400.woff2') format('woff2');
+  font-weight:400; font-display:swap;
 }
 @font-face{
   font-family:'Space Grotesk';
   src:url('../fonts/space-grotesk-var.woff2') format('woff2');
   font-weight:300 700; font-display:swap;
 }
-@font-face{
-  font-family:'Space Mono';
-  src:url('../fonts/space-mono-400.woff2') format('woff2');
-  font-weight:400; font-display:swap;
-}
+
+/* sky values are registered so the whole sky can ease from one hour to the next */
+@property --sky-0{syntax:'<color>'; inherits:true; initial-value:#111a45}
+@property --sky-1{syntax:'<color>'; inherits:true; initial-value:#27388a}
+@property --sky-2{syntax:'<color>'; inherits:true; initial-value:#5552b0}
+@property --sky-3{syntax:'<color>'; inherits:true; initial-value:#c07aa8}
+@property --sky-mul{syntax:'<color>'; inherits:true; initial-value:#ffffff}
+@property --grade{syntax:'<color>'; inherits:true; initial-value:#ffffff}
+@property --grade-add{syntax:'<color>'; inherits:true; initial-value:rgba(0,0,0,0)}
+@property --sky-o{syntax:'<number>'; inherits:true; initial-value:0}
+@property --stars-o{syntax:'<number>'; inherits:true; initial-value:.12}
+@property --halo-o{syntax:'<number>'; inherits:true; initial-value:.85}
+@property --veil-o{syntax:'<number>'; inherits:true; initial-value:0}
+@property --shoot-o{syntax:'<number>'; inherits:true; initial-value:1}
+@property --tint-o{syntax:'<number>'; inherits:true; initial-value:1}
+@property --tint-pulse{syntax:'<number>'; inherits:false; initial-value:.5}
 
 :root{
-  /* color */
-  --bg:#0a0a0c;
-  --surface:#131316;
-  --surface-2:#1a1a1f;
-  --ink:#f4eef1;
-  --dim:rgba(244,238,241,.58);
-  --faint:rgba(244,238,241,.28);
-  --line:rgba(244,238,241,.12);
-  --signal:#ff2222;
-  --signal-ink:#ff4444;        /* red used AS text on dark — slightly lifted for contrast */
-  --signal-soft:rgba(255,34,34,.12);
-  --glitch:#29e6ff;
-  --chrome:linear-gradient(160deg,#e8e8ec 0%,#9a9aa4 45%,#f2f2f6 100%);
-  --glow:rgba(255,34,34,.28);
+  /* color — the photo's own night */
+  --night:#0b0f12;
+  --bg:#0b0f12;
+  --surface:#11161a;
+  --surface-2:#171d22;
+  --ink:#ece7da;
+  --dim:rgba(236,231,218,.66);
+  --faint:rgba(236,231,218,.36);
+  --line:rgba(236,231,218,.14);
+  --gold:#f6e2b8;        /* the spanish voice */
+  --marigold:#f2b544;    /* desert marigold — the one accent */
+  --accent:var(--marigold);
+  --accent-ink:#0b0f12;  /* text on top of the accent */
+  --accent-soft:color-mix(in srgb, var(--accent) 12%, transparent);
 
   /* type */
-  --f-display:'Unbounded',system-ui,sans-serif;
+  --f-word:'Syne',system-ui,sans-serif;                 /* wordmark, tab names, buttons */
+  --f-voice:'Instrument Serif',Georgia,serif;           /* headlines + spanish lines */
   --f-body:'Space Grotesk',system-ui,sans-serif;
-  --f-mono:'Space Mono',ui-monospace,monospace;
-  --t-xs:.75rem;      /* 12 */
+  --f-mono:'JetBrains Mono',ui-monospace,monospace;     /* times + small labels */
+  --t-xs:.6875rem;    /* 11 */
   --t-s:.875rem;      /* 14 */
   --t-base:1.0625rem; /* 17 */
   --t-l:1.3125rem;    /* 21 */
   --t-xl:1.75rem;     /* 28 */
-  --t-2xl:clamp(2rem,5vw,2.625rem);
-  --t-3xl:clamp(2.75rem,7vw,4rem);
-  --t-hero:clamp(3.5rem,10vw,6rem);
+  --t-2xl:clamp(2.1rem,4.6vw,3rem);
+  --t-3xl:clamp(3.4rem,10vw,6.5rem);
 
   /* space & shape */
   --sp-1:.25rem; --sp-2:.5rem; --sp-3:1rem; --sp-4:1.5rem;
   --sp-5:2.5rem; --sp-6:4rem; --sp-7:6.5rem;
-  --r-s:.5rem; --r-m:1rem; --r-l:1.25rem;
-  --container:72rem;
-  --nav-h:4rem;
+  --r-s:.5rem; --r-m:.875rem; --r-l:1.25rem;
+  --container:68rem;
+  --nav-h:4.25rem;
 
   /* motion */
   --ease:cubic-bezier(.22,.8,.3,1);
-  --fast:180ms; --med:280ms;
+  --fast:180ms; --med:320ms;
+  --sky-t:1.15s;
 
   color-scheme:dark;
 }
 
-/* low-light mode: dimmer everything, red pulled back, glows off, media dimmed.
+/* ---------- the six hours ----------
+   set on <html data-phase> for a page, or on .stage for the home sky.
+   --sky-0..3 run top → horizon; --grade tints the whole photo; --sky-mul darkens only the sky. */
+[data-phase="golden"]{   /* 6:40 pm · hora dorada · music */
+  --sky-0:#3b68a0; --sky-1:#7391c2; --sky-2:#f0b08a; --sky-3:#ffcf86; --sky-o:.92;
+  --grade:#ffeacf; --grade-add:rgba(255,160,60,.09);
+  --stars-o:0; --halo-o:.3; --veil-o:.45; --shoot-o:0; --tint-o:.15;
+  --bg:#12100c; --surface:#1a1610; --surface-2:#221c14; --accent:#f7c36b;
+}
+[data-phase="sunset"]{   /* 7:15 pm · atardecer · mixes */
+  --sky-0:#2a2968; --sky-1:#7c3c8c; --sky-2:#ee6379; --sky-3:#ffa65c; --sky-o:.9;
+  --grade:#f4cbc2; --grade-add:rgba(200,60,90,.1);
+  --stars-o:0; --halo-o:.5; --veil-o:.18; --shoot-o:.25; --tint-o:.55;
+  --bg:#130c10; --surface:#1c1217; --surface-2:#25171e; --accent:#ff9a6b;
+}
+[data-phase="blue"]{     /* 7:50 pm · hora azul · dates */
+  --sky-0:#0e1a52; --sky-1:#203c9f; --sky-2:#4c61cc; --sky-3:#b48bc8; --sky-o:.85;
+  --grade:#aeb9f4; --grade-add:rgba(30,50,170,.12);
+  --stars-o:.4; --halo-o:.9; --veil-o:0; --shoot-o:1;
+  --bg:#0a0d19; --surface:#101425; --surface-2:#161b30; --accent:#a9b8ff;
+}
+[data-phase="midnight"]{ /* 12:00 am · medianoche · radio */
+  --sky-0:#020309; --sky-1:#04061a; --sky-2:#080d2c; --sky-3:#101a44; --sky-o:.8;
+  --sky-mul:#4b5884; --grade:#8b97c2;
+  --stars-o:1; --halo-o:1; --veil-o:0; --shoot-o:1;
+  --bg:#06070d; --surface:#0c0e17; --surface-2:#121522; --accent:#f3ecd8;
+}
+[data-phase="dawn"]{     /* 4:30 am · madrugada · the lab */
+  --sky-0:#040d1c; --sky-1:#0a2538; --sky-2:#12404f; --sky-3:#2a6c72; --sky-o:.85;
+  --sky-mul:#8fa3b8; --grade:#9cc2c6; --grade-add:rgba(20,90,110,.1);
+  --stars-o:.6; --halo-o:.7; --veil-o:0; --shoot-o:1;
+  --bg:#071013; --surface:#0c181c; --surface-2:#112126; --accent:#86d6cf;
+}
+[data-phase="sunrise"]{  /* 6:10 am · amanecer · about */
+  --sky-0:#5c84c8; --sky-1:#b3a3d6; --sky-2:#ffb7a3; --sky-3:#ffe0a3; --sky-o:.95;
+  --grade:#e6d0c8; --grade-add:rgba(255,170,120,.13);
+  --stars-o:0; --halo-o:.1; --veil-o:.6; --shoot-o:0; --tint-o:.08;
+  --bg:#14100f; --surface:#1d1716; --surface-2:#261e1c; --accent:#ffc7a3;
+}
+
+/* low-light mode: dimmer everything, glows off, motion calmer.
    toggled via data-mode="low" on <html>, persisted in localStorage. */
 :root[data-mode="low"]{
-  --bg:#050506;
-  --surface:#0b0b0d;
-  --surface-2:#101013;
-  --ink:#d9d3d6;
-  --dim:rgba(217,211,214,.5);
-  --signal:#b31b1b;
-  --signal-ink:#d63a3a;
-  --glitch:#1fa8bd;
-  --glow:transparent;
+  --ink:#d6d1c5;
+  --dim:rgba(214,209,197,.56);
+  --marigold:#c9973a;
+  --gold:#d9c7a0;
 }
 :root[data-mode="low"] img,
 :root[data-mode="low"] video,

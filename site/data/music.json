@@ -1,0 +1,11 @@
+{
+  "_edit_me": "the music page renders these five tracks as moon phases, in order. set 'done' to true when a track is finished and its moon lights up. 'title' can stay empty until you want it public. 'listen' is an optional link (soundcloud, spotify) shown once a track is out.",
+  "ep": "nueva luna",
+  "tracks": [
+    { "title": "", "done": false, "listen": "" },
+    { "title": "", "done": false, "listen": "" },
+    { "title": "", "done": false, "listen": "" },
+    { "title": "", "done": false, "listen": "" },
+    { "title": "", "done": false, "listen": "" }
+  ]
+}
